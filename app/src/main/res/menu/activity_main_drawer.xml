@@ -6,33 +6,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_community"
+            android:id="@+id/drawer01"
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/tab_home1"/>
         <item
-            android:id="@+id/nav_video"
-            android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
-
-        <item
-            android:id="@+id/nav_workcollet"
+            android:id="@+id/drawer02"
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/tab_home1"/>
 
         <item
-            android:id="@+id/nav_reward"
+            android:id="@+id/drawer03"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+
+        <item
+            android:id="@+id/drawer04"
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/tab_home1"/>
         <item
-            android:id="@+id/nav_vip"
+            android:id="@+id/drawer05"
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/tab_home1"/>
         <item
-            android:id="@+id/nav_bbs"
+            android:id="@+id/drawer06"
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/tab_home1"/>
         <item
-            android:id="@+id/nav_set"
+            android:id="@+id/drawer07"
             android:icon="@drawable/ic_account_balance_black_24dp"
             android:title="@string/tab_home1"/>
 

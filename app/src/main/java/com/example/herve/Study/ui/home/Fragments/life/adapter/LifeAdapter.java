@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.herve.Study.R;
@@ -52,19 +53,18 @@ public class LifeAdapter extends RecyclerView.Adapter<LifeAdapter.LifeViewHolder
     }
 
     @Override
-    public void onBindViewHolder(LifeViewHolder holder, int position) {
+    public void onBindViewHolder(final LifeViewHolder holder, int position) {
         GradeBean gradeBean = data.get(position);
         holder.tvGradeTitle.setText(gradeBean.getGradeName());
 
-        GradeItemAdapter gradeItemAdapter = new GradeItemAdapter(gradeBean.getCurriculumBean(), mContext);
-
-        RecyclerView.LayoutManager layoutManager = new ScrollGridLayoutManager(mContext, 3);
-
-        holder.rvGrade.setLayoutFrozen(false);
-
-        holder.rvGrade.setLayoutManager(layoutManager);
-
-        holder.rvGrade.setAdapter(gradeItemAdapter);
+        if( holder.itemGroup.getChildCount()==0){
+            GradeItemAdapter gradeItemAdapter = new GradeItemAdapter(gradeBean.getCurriculumBean(), mContext) {
+                @Override
+                protected void getViews(LinearLayout viewGroup) {
+                    holder.itemGroup.addView(viewGroup);
+                }
+            };
+        }
 
     }
 
@@ -105,8 +105,8 @@ public class LifeAdapter extends RecyclerView.Adapter<LifeAdapter.LifeViewHolder
         TextView tvGradeTitle;
         @BindView(R.id.view_line)
         View viewLine;
-        @BindView(R.id.rv_grade)
-        RecyclerView rvGrade;
+        @BindView(R.id.item_group)
+        LinearLayout itemGroup;
 
         public LifeViewHolder(View itemView) {
             super(itemView);

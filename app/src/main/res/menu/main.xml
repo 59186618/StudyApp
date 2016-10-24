@@ -6,4 +6,12 @@
         android:orderInCategory="100"
         android:title="@string/tab_home1"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="100"
+        android:title="@string/tab_home1"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"/>
+
+
 </menu>
