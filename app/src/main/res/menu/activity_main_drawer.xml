@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".ui.home.MainActivity"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_community"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+
+        <item
+            android:id="@+id/nav_workcollet"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+
+        <item
+            android:id="@+id/nav_reward"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+        <item
+            android:id="@+id/nav_vip"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+        <item
+            android:id="@+id/nav_bbs"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+        <item
+            android:id="@+id/nav_set"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/tab_home1"/>
+
+        >
+    </group>
+
+</menu>

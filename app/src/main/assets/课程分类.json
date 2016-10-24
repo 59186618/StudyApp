@@ -1,0 +1,159 @@
+[
+  {
+    "gradeName": "一年级",
+    "CurriculumBean": [
+      {
+        "resId": 1,
+        "name": "语文"
+      },
+      {
+        "resId": 1,
+        "name": "数学"
+      },
+      {
+        "resId": 1,
+        "name": "自然"
+      },
+      {
+        "resId": 1,
+        "name": "音乐"
+      },
+      {
+        "resId": 1,
+        "name": "体育"
+      }
+    ]
+  },
+  {
+    "gradeName": "二年级",
+    "CurriculumBean": [
+      {
+        "resId": 1,
+        "name": "语文"
+      },
+      {
+        "resId": 1,
+        "name": "数学"
+      },
+      {
+        "resId": 1,
+        "name": "英语"
+      },
+      {
+        "resId": 1,
+        "name": "自然"
+      },
+      {
+        "resId": 1,
+        "name": "音乐"
+      },
+      {
+        "resId": 1,
+        "name": "绘画"
+      },
+      {
+        "resId": 1,
+        "name": "体育"
+      }
+    ]
+  },
+  {
+    "gradeName": "三年级",
+    "CurriculumBean": [
+      {
+        "resId": 1,
+        "name": "语文"
+      },
+      {
+        "resId": 1,
+        "name": "数学"
+      },
+      {
+        "resId": 1,
+        "name": "英语"
+      },
+      {
+        "resId": 1,
+        "name": "自然"
+      },
+      {
+        "resId": 1,
+        "name": "音乐"
+      },
+      {
+        "resId": 1,
+        "name": "绘画"
+      },
+      {
+        "resId": 1,
+        "name": "体育"
+      }
+    ]
+  },
+  {
+    "gradeName": "四年级",
+    "CurriculumBean": [
+      {
+        "resId": 1,
+        "name": "语文"
+      },
+      {
+        "resId": 1,
+        "name": "数学"
+      },
+      {
+        "resId": 1,
+        "name": "英语"
+      },
+      {
+        "resId": 1,
+        "name": "自然"
+      },
+      {
+        "resId": 1,
+        "name": "音乐"
+      },
+      {
+        "resId": 1,
+        "name": "绘画"
+      },
+      {
+        "resId": 1,
+        "name": "体育"
+      }
+    ]
+  },
+  {
+    "gradeName": "五年级",
+    "CurriculumBean": [
+      {
+        "resId": 1,
+        "name": "语文"
+      },
+      {
+        "resId": 1,
+        "name": "数学"
+      },
+      {
+        "resId": 1,
+        "name": "英语"
+      },
+      {
+        "resId": 1,
+        "name": "自然"
+      },
+      {
+        "resId": 1,
+        "name": "音乐"
+      },
+      {
+        "resId": 1,
+        "name": "绘画"
+      },
+      {
+        "resId": 1,
+        "name": "体育"
+      }
+    ]
+  }
+]
