@@ -5,6 +5,7 @@
     android:id="@+id/activity_curriculum"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/welcome"
     tools:context="com.example.herve.Study.ui.curriculum.CurriculumActivity">
 
 
