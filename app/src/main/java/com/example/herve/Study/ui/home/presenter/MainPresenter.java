@@ -13,9 +13,9 @@ import com.example.herve.Study.base.presenter.MvpBasePresenter;
  * @ projectName     :BaseApp
  * @ version
  */
-public class MainPresenterView extends MvpBasePresenter<MainConstant.PresenterView> implements MainConstant.Presenter {
+public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> implements MainConstant.Presenter {
 
-    public MainPresenterView(MainConstant.PresenterView mPresenter) {
+    public MainPresenter(MainConstant.PresenterView mPresenter) {
         super(mPresenter);
     }
 

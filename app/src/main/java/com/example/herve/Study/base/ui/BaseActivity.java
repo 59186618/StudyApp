@@ -4,10 +4,18 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.example.herve.Study.R;
 import com.example.herve.Study.utils.sp.SharedPreferencesUtil;
 import com.example.herve.Study.utils.sp.SpUtil;
 
@@ -26,6 +34,8 @@ import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    private RelativeLayout mContentView;
+    private View mRootView;
     protected Context mContext;
     protected Unbinder mUnbinder;
     private String TAG = getClass().getSimpleName();
@@ -43,25 +53,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected SharedPreferencesUtil sharedPreferencesUtil;
     protected SpUtil spUtil;
 
+    protected ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(initLayoutId());
         mContext = this;
+
+        setContentView(R.layout.activity_base);
+
+        attchActivityLayout();
+
         mUnbinder = ButterKnife.bind(this);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//
-//            // Translucent status bar
-//
-//            getWindow().setFlags(
-//
-//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-//
-//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//
-//        }
 
 
         findViewById();
@@ -72,6 +75,40 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initListener();
 
+    }
+
+    private void attchActivityLayout() {
+
+        mContentView = (RelativeLayout) findViewById(R.id.rl_base_root);
+
+        mRootView = LayoutInflater.from(mContext).inflate(initLayoutId(), mContentView, false);
+
+        mContentView.addView(mRootView);
+
+        initProgressBar();
+
+
+    }
+
+    private void initProgressBar() {
+        mProgressBar = new ProgressBar(mContext);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        mProgressBar.setLayoutParams(params);
+        mProgressBar.setVisibility(View.GONE);
+
+        mContentView.addView(mProgressBar);
+    }
+
+
+    public void showSnackToast(String Message) {
+
+        Snackbar.make(getBaseActivityContentView(), Message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    public void showToast(String Message) {
+
+        Toast.makeText(mContext, Message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -116,8 +153,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         return getWindow().getDecorView().getWidth();
     }
 
-    private View getContentView() {
-        return getWindow().findViewById(Window.ID_ANDROID_CONTENT);
+    private View getThisActivityContentView() {
+        return mRootView;
+    }
+
+    private RelativeLayout getBaseActivityContentView() {
+        return mContentView;
     }
 
 

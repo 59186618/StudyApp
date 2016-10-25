@@ -59,8 +59,7 @@ public class MainActivity extends BaseActivity {
 
                         }
                     }
-                })
-                .stopAutoPlay();
+                });
 
     }
 

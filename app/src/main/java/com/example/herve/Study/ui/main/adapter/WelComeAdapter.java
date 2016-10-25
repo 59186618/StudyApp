@@ -3,6 +3,7 @@ package com.example.herve.Study.ui.main.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.bannerlibrary.BannerPagerAdapter;
@@ -31,11 +32,10 @@ public class WelComeAdapter extends BannerPagerAdapter {
     }
 
     @Override
-    public View setView(int position) {
+    public View setView(ViewGroup container, int position) {
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.welcome_item, container, false);
 
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.welcome_item, null);
-
-        ImageView imageView= (ImageView) itemView.findViewById(R.id.vp_welcome);
+        ImageView imageView = (ImageView) itemView.findViewById(R.id.vp_welcome);
         imageView.setImageResource(R.drawable.welcome);
 
         return itemView;

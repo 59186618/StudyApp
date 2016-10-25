@@ -4,10 +4,15 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v7.widget.AppCompatTextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.BaseFragment;
 import com.example.herve.Study.ui.home.Fragments.life.LifeFragment;
 import com.example.herve.Study.ui.home.Fragments.work.WorkFragment;
@@ -65,5 +70,13 @@ public class FragmentsAdapter extends FragmentPagerAdapter {
     }
 
 
+    public View getPageView(int position) {
+
+        ViewGroup viewGroup = (ViewGroup) LayoutInflater.from(mContext).inflate(R.layout.item_tab_layout, null);
+        AppCompatTextView textView = (AppCompatTextView) viewGroup.findViewById(R.id.tv_tab_title);
+        textView.setText(data.get(position).getTittle());
+
+        return viewGroup;
+    }
 
 }

@@ -1,14 +1,18 @@
 package com.example.herve.Study.ui.home.Fragments.life.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.herve.Study.R;
+import com.example.herve.Study.base.ui.BaseActivity;
 import com.example.herve.Study.bean.CurriculumBean;
+import com.example.herve.Study.ui.curriculum.CurriculumActivity;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,8 @@ abstract class GradeItemAdapter {
 
     private Context mContext;
     private LinearLayout viewGroup;
-    private String TAG = getClass().getSimpleName();
+    private String TAG = "测试点击";
+    private String TAG2 = getClass().getSimpleName();
 
 
     public GradeItemAdapter(ArrayList<CurriculumBean> data, Context mContext) {
@@ -56,14 +61,20 @@ abstract class GradeItemAdapter {
                 gradeItemViewHolder = new GradeItemGroupViewHolder();
                 gradeItemViewHolder.ivCurriculumIcon01.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
                 gradeItemViewHolder.tvCurriculumName01.setText(curriculumBean.getName());
+                setClickListener(gradeItemViewHolder.llItemCurriculum01, position);
             }
             if (position % 3 == 1) {
                 gradeItemViewHolder.ivCurriculumIcon02.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
                 gradeItemViewHolder.tvCurriculumName02.setText(curriculumBean.getName());
+                setClickListener(gradeItemViewHolder.llItemCurriculum02, position);
+
+
             }
             if (position % 3 == 2) {
                 gradeItemViewHolder.ivCurriculumIcon03.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
                 gradeItemViewHolder.tvCurriculumName03.setText(curriculumBean.getName());
+                setClickListener(gradeItemViewHolder.llItemCurriculum03, position);
+
                 viewGroup.addView(gradeItemViewHolder.itemView);
             }
 
@@ -72,15 +83,21 @@ abstract class GradeItemAdapter {
         if (last > 0) {
             gradeItemViewHolder = new GradeItemGroupViewHolder();
 
-            for (int i = 0; i < last; i++) {
-                CurriculumBean curriculumBean = data.get(data.size() - last + i);
-                if (i == 0) {
+            for (int position = 0; position < last; position++) {
+                int selectPosition = data.size() - last + position;
+                CurriculumBean curriculumBean = data.get(selectPosition);
+                if (position == 0) {
                     gradeItemViewHolder.ivCurriculumIcon01.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
                     gradeItemViewHolder.tvCurriculumName01.setText(curriculumBean.getName());
+                    setClickListener(gradeItemViewHolder.llItemCurriculum01, selectPosition);
+
                 }
-                if (i == 1) {
+                if (position == 1) {
+                    gradeItemViewHolder.itemView.setTag(position);
                     gradeItemViewHolder.ivCurriculumIcon02.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
                     gradeItemViewHolder.tvCurriculumName02.setText(curriculumBean.getName());
+                    setClickListener(gradeItemViewHolder.llItemCurriculum02, selectPosition);
+
                 }
 
             }
@@ -90,6 +107,24 @@ abstract class GradeItemAdapter {
 
         getViews(viewGroup);
     }
+
+    protected void setClickListener(View itemView, final int position) {
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Log.e(TAG, "onClick: position=" + position);
+//                ((BaseActivity) mContext).showSnackToast(data.get(position).getName());
+
+                Intent intent = new Intent(mContext, CurriculumActivity.class);
+
+
+                mContext.startActivity(intent);
+            }
+        });
+
+    }
+
 
     protected abstract void getViews(LinearLayout viewGroup);
 
@@ -113,6 +148,12 @@ abstract class GradeItemAdapter {
         ImageView ivCurriculumIcon03;
         @BindView(R.id.tv_curriculum_name_03)
         AppCompatTextView tvCurriculumName03;
+        @BindView(R.id.ll_item_curriculum01)
+        LinearLayout llItemCurriculum01;
+        @BindView(R.id.ll_item_curriculum02)
+        LinearLayout llItemCurriculum02;
+        @BindView(R.id.ll_item_curriculum03)
+        LinearLayout llItemCurriculum03;
 
         public GradeItemGroupViewHolder() {
             itemView = LayoutInflater.from(mContext).inflate(R.layout.item_curriculum_layout, null, false);

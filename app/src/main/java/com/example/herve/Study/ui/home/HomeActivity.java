@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -11,8 +12,10 @@ import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.herve.Study.R;
@@ -21,7 +24,7 @@ import com.example.herve.Study.base.ui.MvpBaseActivity;
 import com.example.herve.Study.ui.home.Fragments.life.LifeFragment;
 import com.example.herve.Study.ui.home.adapter.FragmentsAdapter;
 import com.example.herve.Study.ui.home.presenter.MainConstant;
-import com.example.herve.Study.ui.home.presenter.MainPresenterView;
+import com.example.herve.Study.ui.home.presenter.MainPresenter;
 
 import java.util.ArrayList;
 
@@ -143,13 +146,27 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
 
     @Override
     protected void initListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                Log.i(TAG, "onClick: Snackbar的点击事件：" + "点击了");
+
+                            }
+                        }).show();
+            }
+        });
 
 
     }
 
     @Override
     protected MainConstant.Presenter initPresenter() {
-        return new MainPresenterView(this);
+        return new MainPresenter(this);
     }
 
 
@@ -186,6 +203,25 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
 
         tabLayout.setupWithViewPager(vpHome);
 
+
+        for (int position = 0; position < tabLayout.getTabCount(); position++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(position);
+            if (tab != null) {
+                tab.setCustomView(fragmentsAdapter.getPageView(position));
+                if (tab.getCustomView() != null) {
+                    View tabView = (View) tab.getCustomView().getParent();
+                    tabView.setTag(position);
+                    tabView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            vpHome.setCurrentItem((Integer) view.getTag());
+                        }
+                    });
+                }
+            }
+        }
+
+
     }
 
     @Override
@@ -193,10 +229,5 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

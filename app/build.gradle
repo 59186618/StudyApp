@@ -3,12 +3,12 @@ apply plugin: 'android-apt'//butterKnife
 apply plugin: 'org.greenrobot.greendao'//GreenDao
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 24
     buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.example.herve.Study"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -44,6 +44,10 @@ android {
 }
 
 dependencies {
+//    悬浮响应按钮(Floating action button)， 点击后会产生墨水扩散效果的圆形按钮。
+//    浮动按钮(Raised button)， 常见的方形纸片按钮，点击后会产生墨水扩散效果。
+//    扁平按钮(Flat button)， 点击后产生墨水扩散效果，和浮动按钮的区别是没有浮起的效果。
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -71,7 +75,7 @@ dependencies {
     /*GreenDAO数据库------------依据博客地址：[http://www.jianshu.com/p/853401a7d02b]*/
     compile 'org.greenrobot:greendao:3.1.1'
     compile 'org.greenrobot:greendao-generator:3.1.0'
-    compile 'com.herve.library.ui:bannerlibrary:1.0.0'
+    compile 'com.herve.library.ui:bannerlibrary:1.0.1'
     /*内存泄漏检测工具leakcanary*/
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
