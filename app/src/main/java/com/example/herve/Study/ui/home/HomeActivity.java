@@ -1,11 +1,9 @@
 package com.example.herve.Study.ui.home;
 
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.ContentLoadingProgressBar;
@@ -25,16 +23,16 @@ import com.example.herve.Study.ui.home.Fragments.life.LifeFragment;
 import com.example.herve.Study.ui.home.adapter.FragmentsAdapter;
 import com.example.herve.Study.ui.home.presenter.MainConstant;
 import com.example.herve.Study.ui.home.presenter.MainPresenter;
+import com.example.herve.Study.wediget.HerveTabLayout.HerveTabLayout;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implements MainConstant.PresenterView, NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.tab_layout)
-    TabLayout tabLayout;
+    HerveTabLayout tabLayout;
     @BindView(R.id.vp_home)
     ViewPager vpHome;
     @BindView(R.id.toolbar)
@@ -202,24 +200,6 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
         vpHome.setAdapter(fragmentsAdapter);
 
         tabLayout.setupWithViewPager(vpHome);
-
-
-        for (int position = 0; position < tabLayout.getTabCount(); position++) {
-            TabLayout.Tab tab = tabLayout.getTabAt(position);
-            if (tab != null) {
-                tab.setCustomView(fragmentsAdapter.getPageView(position));
-                if (tab.getCustomView() != null) {
-                    View tabView = (View) tab.getCustomView().getParent();
-                    tabView.setTag(position);
-                    tabView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            vpHome.setCurrentItem((Integer) view.getTag());
-                        }
-                    });
-                }
-            }
-        }
 
 
     }

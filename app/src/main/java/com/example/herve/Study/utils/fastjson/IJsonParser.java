@@ -6,7 +6,7 @@ import java.util.Map;
 
 
 /**
- * The interface Json parser.
+ * The inter Json parser.
  */
 public interface IJsonParser {
 
