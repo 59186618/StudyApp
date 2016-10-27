@@ -84,7 +84,7 @@ public class HerveTabLayout extends TabLayout {
                     View tabView = (View) tab.getCustomView().getParent();
                     tabView.setTag(position);
                     if (position == 0) {
-                        tabLayoutAdapter.setDraftStyle(tab.getCustomView());
+                        tabLayoutAdapter.setSelectStyle(tab.getCustomView());
                     }
                     tabView.setOnClickListener(new View.OnClickListener() {
                         @Override
