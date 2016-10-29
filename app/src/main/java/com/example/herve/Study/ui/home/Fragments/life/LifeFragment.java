@@ -108,4 +108,9 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
 
     }
 
+    @Override
+    protected void byUserReturnFragment() {
+
+    }
+
 }

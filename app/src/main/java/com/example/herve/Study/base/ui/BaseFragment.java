@@ -35,6 +35,9 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void initListener();
 
+    protected abstract void byUserReturnFragment();
+
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -43,10 +46,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void initFetchData() {
-        if (mIsVisibleToUser && mIsViewInitiated && !mIsDataInitiated) {
-            initData();
-            initListener();
-            mIsDataInitiated = true;
+        if (mIsVisibleToUser && mIsViewInitiated) {
+            if (!mIsDataInitiated) {
+                initData();
+                initListener();
+                mIsDataInitiated = true;
+            } else {
+                byUserReturnFragment();
+            }
+
         }
     }
 
@@ -77,6 +85,18 @@ public abstract class BaseFragment extends Fragment {
         findViewById();
         initView();
         return mRootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setUserVisibleHint(true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        setUserVisibleHint(false);
     }
 
     @Override

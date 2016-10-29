@@ -38,6 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Unbinder mUnbinder;
     private String TAG = getClass().getSimpleName();
 
+
     protected abstract int initLayoutId();
 
     protected abstract void findViewById();
@@ -60,22 +61,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_base);
 
-        attchActivityLayout();
+        attachActivityLayout();
 
         mUnbinder = ButterKnife.bind(this);
 
-
         findViewById();
 
-        initData();
-
         initView();
+
+        initData();
 
         initListener();
 
     }
 
-    private void attchActivityLayout() {
+
+    private void attachActivityLayout() {
 
         mContentView = (RelativeLayout) findViewById(R.id.rl_base_root);
 

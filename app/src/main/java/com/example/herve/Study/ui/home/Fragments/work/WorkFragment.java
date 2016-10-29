@@ -85,4 +85,9 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
 
     }
 
+    @Override
+    protected void byUserReturnFragment() {
+
+    }
+
 }

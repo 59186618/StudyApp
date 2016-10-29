@@ -5,6 +5,8 @@
     <string name="tab_home2">Tab02</string>
     <string name="tab_home3">Tab03</string>
 
+    <string name="tv_enter">点击进入</string>
+
     <string name="text_view_show">1,Android design支持库中提供的TabLayout默认把Tab的OnClickListener给写死了，但是在项目中有时候需要做一些控制处理，比如选中某一个Tab之前必须是先登录，未登录的情况需要跳转到登录界面。</string>
     <string name="text_view_show_a">Android design</string>
     <string name="text_view_show_b">Android design支持库中提供的TabLayout默认把Tab的OnClickListener给</string>
