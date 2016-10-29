@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:fitsSystemWindows="true"
     tools:context="com.example.herve.Study.ui.main.MainActivity">
 
     <com.example.bannerlibrary.Banner
@@ -13,4 +13,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </com.example.bannerlibrary.Banner>
+
 </RelativeLayout>

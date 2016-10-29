@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
 
+
     @Override
     protected int initLayoutId() {
         return R.layout.activity_main;
@@ -47,19 +48,23 @@ public class MainActivity extends BaseActivity {
         data.add("02");
         WelComeAdapter adapter = new WelComeAdapter(mContext, data);
 
-        bannerMain.setDot(R.drawable.btn_radio_on_disabled_holo_dark, R.drawable.btn_radio_on_holo_dark)
-                .setDotGravity(Banner.CENTER).
-                setAdapter(adapter).
-                setOnItemClickListener(new BannerPagerAdapter.onItemClickListener() {
-                    @Override
-                    public void onClick(int position) {
-                        if(position==data.size()-1){
-                            Intent intent=new Intent(mContext, HomeActivity.class);
-                            startActivity(intent);
+        bannerMain.setDot(R.drawable.btn_radio_on_holo_dark, R.drawable.btn_radio_on_disabled_holo_dark);
+        bannerMain.setDotGravity(Banner.CENTER);
+        bannerMain.setLimited(false);
+        bannerMain.canAuto(false);
+        bannerMain.setAdapter(adapter);
+        bannerMain.setOnItemClickListener(new BannerPagerAdapter.onItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                if (position == data.size() - 1) {
+                    Intent intent = new Intent(mContext, HomeActivity.class);
+                    startActivity(intent);
 
-                        }
-                    }
-                });
+                }
+            }
+
+        });
+
 
     }
 

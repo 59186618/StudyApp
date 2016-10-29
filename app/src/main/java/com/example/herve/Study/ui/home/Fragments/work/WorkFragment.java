@@ -4,11 +4,12 @@ package com.example.herve.Study.ui.home.Fragments.work;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
-import butterknife.BindView;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseFragment;
 import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkContract;
 import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkPresenter;
+
+import butterknife.BindView;
 
 /**
  * Created           :Herve on 2016/10/10.

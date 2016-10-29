@@ -29,7 +29,7 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
                 mPresenter.success();
                 mPresenter.setProgressVisibility(View.GONE);
             }
-        },200);
+        }, 200);
 
 
     }

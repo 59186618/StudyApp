@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.herve.Study.R;
-import com.example.herve.Study.base.ui.BaseActivity;
 import com.example.herve.Study.bean.GradeBean;
 
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class LifeAdapter extends RecyclerView.Adapter<LifeAdapter.LifeViewHolder
         final GradeBean gradeBean = data.get(position);
         holder.tvGradeTitle.setText(gradeBean.getGradeName());
 
-        if( holder.itemGroup.getChildCount()==0){
+        if (holder.itemGroup.getChildCount() == 0) {
             GradeItemAdapter gradeItemAdapter = new GradeItemAdapter(gradeBean.getCurriculumBean(), mContext) {
                 @Override
                 protected void getViews(LinearLayout viewGroup) {

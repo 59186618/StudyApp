@@ -16,6 +16,7 @@ public interface MainConstant {
 
     interface Presenter extends BasePresenter {
         void loadData();
+
         void refreshData();
     }
 

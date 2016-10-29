@@ -8,21 +8,27 @@ public class Constants {
     public static final String HTTP_PREFIX = "http://";
     public static final String HTTPS_PREFIX = "https://";
 
-    /** Activity和Fragment类型文件 */
+    /**
+     * Activity和Fragment类型文件
+     */
     public static final String BASE_TYPE_FRAGMENT_MAP_PATH = "raw://type_fragment_map";
 
     public static final String BASE_TYPE_ACTIVITY_MAP_PATH = "raw://type_activity_map";
 
     /** END */
 
-    /** Broadcast constants */
+    /**
+     * Broadcast constants
+     */
     public static final String SET_FONT_ACTION = "com.trs.activity.TRSAbsBaseFragmentActivity.SetFontAction";
     public static final String SET_FONT_ACTION_FONT_NAME = "com.trs.activity.TRSAbsBaseFragmentActivity.FontName";
     public static final String SET_DAY_NIGHT_MODE_ACTION = "com.trs.activity.TRSAbsBaseFragmentActivity.SetDayNightModeAction";
     public static final String SET_DAY_NIGHT_MODE_ACTION_THEME_NAME = "com.trs.activity.TRSAbsBaseFragmentActivity.ThemeName";
-    public static final String SP_NAME ="SP_NAME";
+    public static final String SP_NAME = "SP_NAME";
 
-    /** JSON数据中Key数组 */
+    /**
+     * JSON数据中Key数组
+     */
     public static final String[] ID_NAMES = {"id"};
     public static final String[] TYPE_NAMES = {"type", "t"};
     public static final String[] IMAGE_URL_NAMES = {"picture", "pic", "image",
@@ -39,7 +45,9 @@ public class Constants {
     public static final String[] TIME_NAMES = {"date", "time"};
 
 
-    /** 朋友圈数据 */
+    /**
+     * 朋友圈数据
+     */
     public static final String[] FRIENDS_NAME = {"friends"};
     public static final String[] FRIEND_ID = {"id"};
     public static final String[] FRIEND_IMG = {"img"};

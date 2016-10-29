@@ -26,10 +26,11 @@ public class WelComeAdapter extends BannerPagerAdapter {
     private Context mContext;
 
 
-    public WelComeAdapter(Context context, List data) {
-        super(context, data);
-        mContext = context;
+    public WelComeAdapter(Context mContext, List data) {
+        super(data);
+        this.mContext = mContext;
     }
+
 
     @Override
     public View setView(ViewGroup container, int position) {

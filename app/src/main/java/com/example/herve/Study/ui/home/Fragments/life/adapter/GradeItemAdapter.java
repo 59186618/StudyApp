@@ -3,14 +3,12 @@ package com.example.herve.Study.ui.home.Fragments.life.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.herve.Study.R;
-import com.example.herve.Study.base.ui.BaseActivity;
 import com.example.herve.Study.bean.CurriculumBean;
 import com.example.herve.Study.ui.curriculum.CurriculumActivity;
 
