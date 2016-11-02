@@ -25,4 +25,9 @@ public abstract class MvpBasePresenter<V extends BasePresenterView> {
         mHandler = new Handler(Looper.getMainLooper());
 
     }
+
+    public void onDestroy() {
+        mHandler.removeCallbacksAndMessages(null);
+    }
+
 }

@@ -1,8 +1,6 @@
 package com.example.herve.Study.ui.home.Fragments.life.presenter;
 
 
-import android.view.View;
-
 import com.example.herve.Study.base.presenter.MvpBasePresenter;
 
 
@@ -25,12 +23,12 @@ public class LifePresenter extends MvpBasePresenter<LifeContract.PresenterView> 
 
     @Override
     public void loading() {
-        mPresenter.setProgressVisibility(View.VISIBLE);
+        mPresenter.isShowDialog(true);
 
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mPresenter.setProgressVisibility(View.GONE);
+                mPresenter.isShowDialog(false);
                 mPresenter.success();
             }
         }, 1000);

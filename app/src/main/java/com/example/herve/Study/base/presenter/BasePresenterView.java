@@ -6,9 +6,9 @@ package com.example.herve.Study.base.presenter;
 
 public interface BasePresenterView {
 
-    void setProgressVisibility(int visibility);
+    void isShowDialog(boolean needShow);
 
     void success();
 
-    void error();
+    void error(int errorCode);
 }

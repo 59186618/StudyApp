@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implements MainConstant.PresenterView, NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends MvpBaseActivity<MainPresenter> implements MainConstant.PresenterView, NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.tab_layout)
     HerveTabLayout tabLayout;
@@ -39,8 +39,6 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     Toolbar toolbar;
     @BindView(R.id.activity_home)
     RelativeLayout activityHome;
-    @BindView(R.id.progress_bar)
-    ContentLoadingProgressBar progressBar;
     @BindView(R.id.appbar)
     AppBarLayout appbar;
     @BindView(R.id.fab)
@@ -163,14 +161,15 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     }
 
     @Override
-    protected MainConstant.Presenter initPresenter() {
+    protected MainPresenter initPresenter() {
         return new MainPresenter(this);
     }
 
 
     @Override
-    public void setProgressVisibility(int visibility) {
-        progressBar.setVisibility(visibility);
+    public void isShowDialog(boolean needShow) {
+
+        showSuperDialog(needShow);
     }
 
     @Override
@@ -205,7 +204,7 @@ public class HomeActivity extends MvpBaseActivity<MainConstant.Presenter> implem
     }
 
     @Override
-    public void error() {
+    public void error(int errorCode) {
 
     }
 

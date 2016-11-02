@@ -2,14 +2,11 @@ package com.example.herve.Study.ui.home.Fragments.work;
 
 
 import android.os.Bundle;
-import android.widget.ProgressBar;
 
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseFragment;
 import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkContract;
 import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkPresenter;
-
-import butterknife.BindView;
 
 /**
  * Created           :Herve on 2016/10/10.
@@ -23,10 +20,6 @@ import butterknife.BindView;
 public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implements WorkContract.PresenterView {
 
 
-    @BindView(R.id.progress)
-    ProgressBar progress;
-
-
     public static WorkFragment newInstance() {
         WorkFragment fragment = new WorkFragment();
         return fragment;
@@ -38,9 +31,11 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
         return fragment;
     }
 
+
     @Override
-    public void setProgressVisibility(int visibility) {
-        progress.setVisibility(visibility);
+    public void isShowDialog(boolean needShow) {
+        mContext.showSuperDialog(needShow);
+
     }
 
     @Override
@@ -49,10 +44,11 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
     }
 
     @Override
-    public void error() {
+    public void error(int errorCode) {
         showToast("加载失败");
 
     }
+
 
     @Override
     protected WorkContract.Presenter initPresenter() {

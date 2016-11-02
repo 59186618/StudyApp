@@ -19,14 +19,17 @@ public class User {
     @Id(autoincrement = true)
     private Long id;
     private String name;
+    private String passWord;
     private String age;
-    private String sex;
+    private boolean sex;
     private String salary;
 
-    @Generated(hash = 1281958717)
-    public User(Long id, String name, String age, String sex, String salary) {
+    @Generated(hash = 2112263995)
+    public User(Long id, String name, String passWord, String age, boolean sex,
+                String salary) {
         this.id = id;
         this.name = name;
+        this.passWord = passWord;
         this.age = age;
         this.sex = sex;
         this.salary = salary;
@@ -52,6 +55,14 @@ public class User {
         this.name = name;
     }
 
+    public String getPassWord() {
+        return this.passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
     public String getAge() {
         return this.age;
     }
@@ -60,11 +71,11 @@ public class User {
         this.age = age;
     }
 
-    public String getSex() {
+    public boolean getSex() {
         return this.sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(boolean sex) {
         this.sex = sex;
     }
 
@@ -75,6 +86,8 @@ public class User {
     public void setSalary(String salary) {
         this.salary = salary;
     }
+
+
 }
 
 

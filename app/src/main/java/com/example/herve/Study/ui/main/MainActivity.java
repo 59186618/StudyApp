@@ -1,10 +1,8 @@
 package com.example.herve.Study.ui.main;
 
-import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.bannerlibrary.Banner;
-import com.example.bannerlibrary.BannerPagerAdapter;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.BaseActivity;
 import com.example.herve.Study.ui.main.adapter.WelComeAdapter;

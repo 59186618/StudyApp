@@ -1,5 +1,6 @@
 package com.example.herve.Study.base.ui;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -8,8 +9,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -52,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected SharedPreferencesUtil sharedPreferencesUtil;
     protected SpUtil spUtil;
 
-    protected ProgressBar mProgressBar;
+    protected ProgressDialog mDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,21 +83,33 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         mContentView.addView(mRootView);
 
-        initProgressBar();
+        initProgressDialog();
 
 
     }
 
-    private void initProgressBar() {
-        mProgressBar = new ProgressBar(mContext);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.CENTER_IN_PARENT);
-        mProgressBar.setLayoutParams(params);
-        mProgressBar.setVisibility(View.GONE);
+    private void initProgressDialog() {
 
-        mContentView.addView(mProgressBar);
+        mDialog = new ProgressDialog(mContext);
+
     }
 
+    private void showDialog() {
+        mDialog.show();
+    }
+
+    private void dismissDialog() {
+        mDialog.dismiss();
+    }
+
+    public void showSuperDialog(boolean needShow) {
+        if (needShow) {
+            showDialog();
+        } else {
+            dismissDialog();
+        }
+
+    }
 
     public void showSnackToast(String Message) {
 

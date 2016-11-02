@@ -2,12 +2,14 @@ package com.example.herve.Study.ui.curriculum;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.example.bannerlibrary.Banner;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseActivity;
@@ -29,7 +31,7 @@ import butterknife.BindView;
  * @ projectName     :StudyApp
  * @ version
  */
-public class CurriculumActivity extends MvpBaseActivity<CurriculumConstant.Presenter> implements CurriculumConstant.PresenterView {
+public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> implements CurriculumConstant.PresenterView {
 
 
     @BindView(R.id.rv_curriculum)
@@ -40,6 +42,8 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumConstant.Prese
     Banner bannerCurriculum;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.iv_bg)
+    AppCompatImageView ivBg;
 
 
     private CurriculumBannerAdapter curriculumBannerAdapter;
@@ -72,7 +76,7 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumConstant.Prese
     }
 
     @Override
-    protected CurriculumConstant.Presenter initPresenter() {
+    protected CurriculumPresenter initPresenter() {
         return new CurriculumPresenter(this);
     }
 
@@ -88,6 +92,7 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumConstant.Prese
 
     @Override
     protected void initView() {
+        Glide.with(mContext).load(R.drawable.welcome).into(ivBg);
 //        toolbar.setNavigationIcon(android.support.design.R.drawable.abc_ic_ab_back_material);
 //        toolbar.showOverflowMenu();
         setSupportActionBar(toolbar);
@@ -112,8 +117,8 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumConstant.Prese
     }
 
     @Override
-    public void setProgressVisibility(int visibility) {
-        mProgressBar.setVisibility(visibility);
+    public void isShowDialog(boolean needShow) {
+        showSuperDialog(needShow);
     }
 
     @Override
@@ -143,9 +148,10 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumConstant.Prese
     }
 
     @Override
-    public void error() {
+    public void error(int errorCode) {
 
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,7 +3,6 @@ package com.example.herve.Study.ui.home.Fragments.life;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ProgressBar;
 
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseFragment;
@@ -32,8 +31,6 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
 
     @BindView(R.id.recycle_view_life)
     RecyclerView recycleViewLife;
-    @BindView(R.id.progress)
-    ProgressBar progress;
 
 
     public static LifeFragment newInstance() {
@@ -47,9 +44,11 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
         return fragment;
     }
 
+
     @Override
-    public void setProgressVisibility(int visibility) {
-        progress.setVisibility(visibility);
+    public void isShowDialog(boolean needShow) {
+
+        mContext.showSuperDialog(needShow);
 
     }
 
@@ -71,8 +70,9 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
 
     }
 
+
     @Override
-    public void error() {
+    public void error(int errorCode) {
         showToast("加载失败！");
     }
 

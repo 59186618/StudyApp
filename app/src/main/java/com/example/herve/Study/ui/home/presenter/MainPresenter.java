@@ -1,7 +1,5 @@
 package com.example.herve.Study.ui.home.presenter;
 
-import android.view.View;
-
 import com.example.herve.Study.base.presenter.MvpBasePresenter;
 
 /**
@@ -21,13 +19,13 @@ public class MainPresenter extends MvpBasePresenter<MainConstant.PresenterView> 
 
     @Override
     public void loadData() {
-        mPresenter.setProgressVisibility(View.VISIBLE);
+        mPresenter.isShowDialog(true);
 
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mPresenter.success();
-                mPresenter.setProgressVisibility(View.GONE);
+                mPresenter.isShowDialog(false);
             }
         }, 200);
 

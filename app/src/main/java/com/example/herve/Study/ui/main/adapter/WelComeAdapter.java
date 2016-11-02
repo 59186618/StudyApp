@@ -3,7 +3,6 @@ package com.example.herve.Study.ui.main.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import com.example.bannerlibrary.BannerPagerAdapter;
 import com.example.herve.Study.R;
 import com.example.herve.Study.ui.home.HomeActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

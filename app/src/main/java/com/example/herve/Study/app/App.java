@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.herve.Study.greendao.dao.DaoMaster;
 import com.example.herve.Study.greendao.dao.DaoSession;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
 /**
  * Created           :Herve on 2016/10/23.
  *
@@ -27,10 +29,23 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        app = this;
 
         /*GreenDao数据库*/
         setDatabase();
+    }
+
+    public static App getApp() {
+        return app;
+    }
+
+    public DaoSession getDaoSession() {
+        return mDaoSession;
+    }
+
+
+    public SQLiteDatabase getDb() {
+        return db;
     }
 
     /**
@@ -51,9 +66,10 @@ public class App extends Application {
         mDaoMaster = new DaoMaster(db);
         mDaoSession = mDaoMaster.newSession();
 
-//        QueryBuilder.LOG_SQL = true;
-// 输出带有具体数值的sql日志
-//        QueryBuilder.LOG_VALUES = true;
+
+        QueryBuilder.LOG_SQL = true;
+        // 输出带有具体数值的sql日志
+        QueryBuilder.LOG_VALUES = true;
 
     }
 }
