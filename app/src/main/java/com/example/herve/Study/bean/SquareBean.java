@@ -9,6 +9,8 @@ package com.example.herve.Study.bean;
  * @ projectName     :SquareDemo
  * @ version
  */
+
+
 public class SquareBean {
     /**
      * resId : 1

@@ -13,6 +13,7 @@ import com.example.herve.Study.bean.CurriculumBean;
 import com.example.herve.Study.ui.curriculum.CurriculumActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +30,7 @@ import butterknife.ButterKnife;
 abstract class GradeItemAdapter {
 
 
-    private ArrayList<CurriculumBean> data;
+    private List<CurriculumBean> data;
 
     private Context mContext;
     private LinearLayout viewGroup;
@@ -37,7 +38,7 @@ abstract class GradeItemAdapter {
     private String TAG2 = getClass().getSimpleName();
 
 
-    public GradeItemAdapter(ArrayList<CurriculumBean> data, Context mContext) {
+    public GradeItemAdapter(List<CurriculumBean> data, Context mContext) {
         this.data = data;
         this.mContext = mContext;
 
@@ -58,19 +59,19 @@ abstract class GradeItemAdapter {
             if (position % 3 == 0) {
                 gradeItemViewHolder = new GradeItemGroupViewHolder();
                 gradeItemViewHolder.ivCurriculumIcon01.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
-                gradeItemViewHolder.tvCurriculumName01.setText(curriculumBean.getName());
+                gradeItemViewHolder.tvCurriculumName01.setText(curriculumBean.getCurriculumName());
                 setClickListener(gradeItemViewHolder.llItemCurriculum01, position);
             }
             if (position % 3 == 1) {
                 gradeItemViewHolder.ivCurriculumIcon02.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
-                gradeItemViewHolder.tvCurriculumName02.setText(curriculumBean.getName());
+                gradeItemViewHolder.tvCurriculumName02.setText(curriculumBean.getCurriculumName());
                 setClickListener(gradeItemViewHolder.llItemCurriculum02, position);
 
 
             }
             if (position % 3 == 2) {
                 gradeItemViewHolder.ivCurriculumIcon03.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
-                gradeItemViewHolder.tvCurriculumName03.setText(curriculumBean.getName());
+                gradeItemViewHolder.tvCurriculumName03.setText(curriculumBean.getCurriculumName());
                 setClickListener(gradeItemViewHolder.llItemCurriculum03, position);
 
                 viewGroup.addView(gradeItemViewHolder.itemView);
@@ -86,14 +87,14 @@ abstract class GradeItemAdapter {
                 CurriculumBean curriculumBean = data.get(selectPosition);
                 if (position == 0) {
                     gradeItemViewHolder.ivCurriculumIcon01.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
-                    gradeItemViewHolder.tvCurriculumName01.setText(curriculumBean.getName());
+                    gradeItemViewHolder.tvCurriculumName01.setText(curriculumBean.getCurriculumName());
                     setClickListener(gradeItemViewHolder.llItemCurriculum01, selectPosition);
 
                 }
                 if (position == 1) {
                     gradeItemViewHolder.itemView.setTag(position);
                     gradeItemViewHolder.ivCurriculumIcon02.setImageResource(R.drawable.ic_account_balance_wallet_black_24dp);
-                    gradeItemViewHolder.tvCurriculumName02.setText(curriculumBean.getName());
+                    gradeItemViewHolder.tvCurriculumName02.setText(curriculumBean.getCurriculumName());
                     setClickListener(gradeItemViewHolder.llItemCurriculum02, selectPosition);
 
                 }
@@ -112,7 +113,7 @@ abstract class GradeItemAdapter {
             @Override
             public void onClick(View view) {
 //                Log.e(TAG, "onClick: position=" + position);
-//                ((BaseActivity) mContext).showSnackToast(data.get(position).getName());
+//                ((BaseActivity) mContext).showSnackToast(data.get(position).getCurriculumName());
 
                 Intent intent = new Intent(mContext, CurriculumActivity.class);
 

@@ -1,6 +1,6 @@
 package com.example.herve.Study.bean;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created           :Herve on 2016/10/23.
@@ -11,18 +11,25 @@ import java.util.ArrayList;
  * @ projectName     :BJXAPP
  * @ version
  */
+
+/*
+* 年级类
+* */
 public class GradeBean {
 
-    private String gradeName;
+    private int gradeId;//年级ID
+    private String gradeName;//年级名字
+    private String headTeacher;//年级班主任
 
-    private ArrayList<CurriculumBean> curriculumBeans;
 
-    public GradeBean() {
+    private List<CurriculumBean> curriculumBeans;
+
+    public int getGradeId() {
+        return gradeId;
     }
 
-    public GradeBean(String gradeName, ArrayList<CurriculumBean> curriculumBeans) {
-        this.gradeName = gradeName;
-        this.curriculumBeans = curriculumBeans;
+    public void setGradeId(int gradeId) {
+        this.gradeId = gradeId;
     }
 
     public String getGradeName() {
@@ -33,11 +40,19 @@ public class GradeBean {
         this.gradeName = gradeName;
     }
 
-    public ArrayList<CurriculumBean> getCurriculumBean() {
+    public String getHeadTeacher() {
+        return headTeacher;
+    }
+
+    public void setHeadTeacher(String headTeacher) {
+        this.headTeacher = headTeacher;
+    }
+
+    public List<CurriculumBean> getCurriculumBeans() {
         return curriculumBeans;
     }
 
-    public void setCurriculumBean(ArrayList<CurriculumBean> curriculumBean) {
-        this.curriculumBeans = curriculumBean;
+    public void setCurriculumBeans(List<CurriculumBean> curriculumBeans) {
+        this.curriculumBeans = curriculumBeans;
     }
 }

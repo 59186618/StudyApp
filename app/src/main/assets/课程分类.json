@@ -1,146 +1,156 @@
 [
   {
+    "gradeId": 1,
     "gradeName": "一年级",
-    "CurriculumBean": [
+    "headTeacher": "一年级",
+    "curriculumBeans": [
       {
         "resId": 1,
-        "name": "语文"
+        "curriculumName": "语文"
       },
       {
         "resId": 1,
-        "name": "数学"
+        "curriculumName": "数学"
       },
       {
         "resId": 1,
-        "name": "自然"
+        "curriculumName": "自然"
       },
       {
         "resId": 1,
-        "name": "音乐"
+        "curriculumName": "音乐"
       },
       {
         "resId": 1,
-        "name": "体育"
+        "curriculumName": "体育"
       }
     ]
   },
   {
+    "gradeId": 1,
     "gradeName": "二年级",
-    "CurriculumBean": [
+    "headTeacher": "一年级",
+    "curriculumBeans": [
       {
         "resId": 1,
-        "name": "语文"
+        "curriculumName": "语文"
       },
       {
         "resId": 1,
-        "name": "数学"
+        "curriculumName": "数学"
       },
       {
         "resId": 1,
-        "name": "英语"
+        "curriculumName": "英语"
       },
       {
         "resId": 1,
-        "name": "自然"
+        "curriculumName": "自然"
       },
       {
         "resId": 1,
-        "name": "音乐"
+        "curriculumName": "音乐"
       },
       {
         "resId": 1,
-        "name": "绘画"
+        "curriculumName": "绘画"
       },
       {
         "resId": 1,
-        "name": "体育"
+        "curriculumName": "体育"
       }
     ]
   },
   {
+    "gradeId": 1,
     "gradeName": "三年级",
-    "CurriculumBean": [
+    "headTeacher": "一年级",
+    "curriculumBeans": [
       {
         "resId": 1,
-        "name": "语文"
+        "curriculumName": "语文"
       },
       {
         "resId": 1,
-        "name": "数学"
+        "curriculumName": "数学"
       },
       {
         "resId": 1,
-        "name": "英语"
+        "curriculumName": "英语"
       },
       {
         "resId": 1,
-        "name": "自然"
+        "curriculumName": "自然"
       },
       {
         "resId": 1,
-        "name": "音乐"
+        "curriculumName": "音乐"
       },
       {
         "resId": 1,
-        "name": "绘画"
+        "curriculumName": "绘画"
       },
       {
         "resId": 1,
-        "name": "体育"
+        "curriculumName": "体育"
       }
     ]
   },
   {
+    "gradeId": 1,
     "gradeName": "四年级",
-    "CurriculumBean": [
+    "headTeacher": "一年级",
+    "curriculumBeans": [
       {
         "resId": 1,
-        "name": "语文"
+        "curriculumName": "语文"
       },
       {
         "resId": 1,
-        "name": "数学"
+        "curriculumName": "数学"
       },
       {
         "resId": 1,
-        "name": "英语"
+        "curriculumName": "英语"
       },
       {
         "resId": 1,
-        "name": "自然"
+        "curriculumName": "自然"
       },
       {
         "resId": 1,
-        "name": "音乐"
+        "curriculumName": "音乐"
       },
       {
         "resId": 1,
-        "name": "绘画"
+        "curriculumName": "绘画"
       },
       {
         "resId": 1,
-        "name": "体育"
+        "curriculumName": "体育"
       }
     ]
   },
   {
+    "gradeId": 1,
     "gradeName": "五年级",
-    "CurriculumBean": [
+    "headTeacher": "一年级",
+    "curriculumBeans": [
       {
         "resId": 1,
-        "name": "语文"
+        "curriculumName": "语文"
       },
       {
         "resId": 1,
-        "name": "数学"
+        "curriculumName": "数学"
       },
       {
         "resId": 1,
-        "name": "英语"
+        "curriculumName": "英语"
       },
       {
         "resId": 1,
-        "name": "自然"
+        "curriculumName": "自然"
       }
     ]
   }

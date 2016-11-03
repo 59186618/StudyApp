@@ -25,11 +25,19 @@ public class UserDao extends AbstractDao<User, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
+        public final static Property UserId = new Property(1, String.class, "userId", false, "USER_ID");
         public final static Property PassWord = new Property(2, String.class, "passWord", false, "PASS_WORD");
-        public final static Property Age = new Property(3, String.class, "age", false, "AGE");
-        public final static Property Sex = new Property(4, boolean.class, "sex", false, "SEX");
-        public final static Property Salary = new Property(5, String.class, "salary", false, "SALARY");
+        public final static Property Name = new Property(3, String.class, "name", false, "NAME");
+        public final static Property Age = new Property(4, String.class, "age", false, "AGE");
+        public final static Property Sex = new Property(5, boolean.class, "sex", false, "SEX");
+        public final static Property Identity = new Property(6, int.class, "Identity", false, "IDENTITY");
+        public final static Property Duties = new Property(7, String.class, "duties", false, "DUTIES");
+        public final static Property Grade = new Property(8, int.class, "grade", false, "GRADE");
+        public final static Property HeadTeacher = new Property(9, String.class, "headTeacher", false, "HEAD_TEACHER");
+        public final static Property Fiduciary = new Property(10, String.class, "fiduciary", false, "FIDUCIARY");
+        public final static Property Father = new Property(11, String.class, "father", false, "FATHER");
+        public final static Property Mother = new Property(12, String.class, "mother", false, "MOTHER");
+        public final static Property Characterization = new Property(13, String.class, "characterization", false, "CHARACTERIZATION");
     }
 
 
@@ -46,11 +54,19 @@ public class UserDao extends AbstractDao<User, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"NAME\" TEXT," + // 1: name
+                "\"USER_ID\" TEXT," + // 1: userId
                 "\"PASS_WORD\" TEXT," + // 2: passWord
-                "\"AGE\" TEXT," + // 3: age
-                "\"SEX\" INTEGER NOT NULL ," + // 4: sex
-                "\"SALARY\" TEXT);"); // 5: salary
+                "\"NAME\" TEXT," + // 3: name
+                "\"AGE\" TEXT," + // 4: age
+                "\"SEX\" INTEGER NOT NULL ," + // 5: sex
+                "\"IDENTITY\" INTEGER NOT NULL ," + // 6: Identity
+                "\"DUTIES\" TEXT," + // 7: duties
+                "\"GRADE\" INTEGER NOT NULL ," + // 8: grade
+                "\"HEAD_TEACHER\" TEXT," + // 9: headTeacher
+                "\"FIDUCIARY\" TEXT," + // 10: fiduciary
+                "\"FATHER\" TEXT," + // 11: father
+                "\"MOTHER\" TEXT," + // 12: mother
+                "\"CHARACTERIZATION\" TEXT);"); // 13: characterization
     }
 
     /** Drops the underlying database table. */
@@ -68,9 +84,9 @@ public class UserDao extends AbstractDao<User, Long> {
             stmt.bindLong(1, id);
         }
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(2, name);
+        String userId = entity.getUserId();
+        if (userId != null) {
+            stmt.bindString(2, userId);
         }
  
         String passWord = entity.getPassWord();
@@ -78,15 +94,47 @@ public class UserDao extends AbstractDao<User, Long> {
             stmt.bindString(3, passWord);
         }
  
+        String name = entity.getName();
+        if (name != null) {
+            stmt.bindString(4, name);
+        }
+ 
         String age = entity.getAge();
         if (age != null) {
-            stmt.bindString(4, age);
+            stmt.bindString(5, age);
         }
-        stmt.bindLong(5, entity.getSex() ? 1L: 0L);
+        stmt.bindLong(6, entity.getSex() ? 1L: 0L);
+        stmt.bindLong(7, entity.getIdentity());
  
-        String salary = entity.getSalary();
-        if (salary != null) {
-            stmt.bindString(6, salary);
+        String duties = entity.getDuties();
+        if (duties != null) {
+            stmt.bindString(8, duties);
+        }
+        stmt.bindLong(9, entity.getGrade());
+ 
+        String headTeacher = entity.getHeadTeacher();
+        if (headTeacher != null) {
+            stmt.bindString(10, headTeacher);
+        }
+ 
+        String fiduciary = entity.getFiduciary();
+        if (fiduciary != null) {
+            stmt.bindString(11, fiduciary);
+        }
+ 
+        String father = entity.getFather();
+        if (father != null) {
+            stmt.bindString(12, father);
+        }
+ 
+        String mother = entity.getMother();
+        if (mother != null) {
+            stmt.bindString(13, mother);
+        }
+ 
+        String characterization = entity.getCharacterization();
+        if (characterization != null) {
+            stmt.bindString(14, characterization);
         }
     }
 
@@ -99,9 +147,9 @@ public class UserDao extends AbstractDao<User, Long> {
             stmt.bindLong(1, id);
         }
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(2, name);
+        String userId = entity.getUserId();
+        if (userId != null) {
+            stmt.bindString(2, userId);
         }
  
         String passWord = entity.getPassWord();
@@ -109,15 +157,47 @@ public class UserDao extends AbstractDao<User, Long> {
             stmt.bindString(3, passWord);
         }
  
+        String name = entity.getName();
+        if (name != null) {
+            stmt.bindString(4, name);
+        }
+ 
         String age = entity.getAge();
         if (age != null) {
-            stmt.bindString(4, age);
+            stmt.bindString(5, age);
         }
-        stmt.bindLong(5, entity.getSex() ? 1L: 0L);
+        stmt.bindLong(6, entity.getSex() ? 1L: 0L);
+        stmt.bindLong(7, entity.getIdentity());
  
-        String salary = entity.getSalary();
-        if (salary != null) {
-            stmt.bindString(6, salary);
+        String duties = entity.getDuties();
+        if (duties != null) {
+            stmt.bindString(8, duties);
+        }
+        stmt.bindLong(9, entity.getGrade());
+ 
+        String headTeacher = entity.getHeadTeacher();
+        if (headTeacher != null) {
+            stmt.bindString(10, headTeacher);
+        }
+ 
+        String fiduciary = entity.getFiduciary();
+        if (fiduciary != null) {
+            stmt.bindString(11, fiduciary);
+        }
+ 
+        String father = entity.getFather();
+        if (father != null) {
+            stmt.bindString(12, father);
+        }
+ 
+        String mother = entity.getMother();
+        if (mother != null) {
+            stmt.bindString(13, mother);
+        }
+ 
+        String characterization = entity.getCharacterization();
+        if (characterization != null) {
+            stmt.bindString(14, characterization);
         }
     }
 
@@ -130,11 +210,19 @@ public class UserDao extends AbstractDao<User, Long> {
     public User readEntity(Cursor cursor, int offset) {
         User entity = new User( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // userId
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // passWord
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // age
-            cursor.getShort(offset + 4) != 0, // sex
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // salary
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // name
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // age
+            cursor.getShort(offset + 5) != 0, // sex
+            cursor.getInt(offset + 6), // Identity
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // duties
+            cursor.getInt(offset + 8), // grade
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // headTeacher
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // fiduciary
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // father
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // mother
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13) // characterization
         );
         return entity;
     }
@@ -142,11 +230,19 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     public void readEntity(Cursor cursor, User entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setUserId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setPassWord(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setAge(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setSex(cursor.getShort(offset + 4) != 0);
-        entity.setSalary(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setAge(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setSex(cursor.getShort(offset + 5) != 0);
+        entity.setIdentity(cursor.getInt(offset + 6));
+        entity.setDuties(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setGrade(cursor.getInt(offset + 8));
+        entity.setHeadTeacher(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setFiduciary(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setFather(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setMother(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setCharacterization(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
      }
     
     @Override

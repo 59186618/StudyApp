@@ -112,7 +112,7 @@ public class RegisterActivity extends MvpBaseActivity<RegisterPresenter> impleme
                     return;
                 }
 
-                User user = new User(null, userName, passWord, "10", false, passWord);
+                User user = new User(System.currentTimeMillis() + "", userName, passWord, "10", false, 10);
 
                 mPresenter.register(user);
 

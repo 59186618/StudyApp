@@ -9,6 +9,13 @@
     <!--android:background="@drawable/side_nav_bar"-->
 
     <ImageView
+        android:id="@+id/iv_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/beautiful_girl"/>
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="李建由"
+        android:text="herve"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20sp"/>
 
@@ -26,13 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="已制作：11 作品"
+        android:text="5651321"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="积分：  89360"/>
+        android:text="9360"/>
 
 </LinearLayout>

@@ -37,8 +37,8 @@ public class LoginPresenter extends MvpBasePresenter<LoginConstant.PresenterView
 
                 QueryBuilder<User> queryBuilder = userDao.queryBuilder();
 
-                List<User> users = queryBuilder.where(UserDao.Properties.Name.eq(userName))
-                        .where(UserDao.Properties.Salary.eq(passWord))
+                List<User> users = queryBuilder.where(UserDao.Properties.UserId.eq(userName))
+                        .where(UserDao.Properties.PassWord.eq(passWord))
                         .list();
 
                 if (users.size() > 0) {

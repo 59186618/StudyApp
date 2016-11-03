@@ -58,7 +58,7 @@ public class LifeAdapter extends RecyclerView.Adapter<LifeAdapter.LifeViewHolder
         holder.tvGradeTitle.setText(gradeBean.getGradeName());
 
         if (holder.itemGroup.getChildCount() == 0) {
-            GradeItemAdapter gradeItemAdapter = new GradeItemAdapter(gradeBean.getCurriculumBean(), mContext) {
+            GradeItemAdapter gradeItemAdapter = new GradeItemAdapter(gradeBean.getCurriculumBeans(), mContext) {
                 @Override
                 protected void getViews(LinearLayout viewGroup) {
                     holder.itemGroup.addView(viewGroup);

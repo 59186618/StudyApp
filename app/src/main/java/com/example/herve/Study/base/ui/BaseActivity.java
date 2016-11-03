@@ -1,14 +1,16 @@
 package com.example.herve.Study.base.ui;
 
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -33,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private RelativeLayout mContentView;
     private View mRootView;
-    protected Context mContext;
+    protected BaseActivity mContext;
     protected Unbinder mUnbinder;
     private String TAG = getClass().getSimpleName();
 
@@ -57,7 +59,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-
         setContentView(R.layout.activity_base);
 
         attachActivityLayout();
@@ -119,6 +120,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void showToast(String Message) {
 
         Toast.makeText(mContext, Message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 使状态栏透明
+     */
+    private void transparentStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mContext.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            mContext.getWindow().setStatusBarColor(Color.TRANSPARENT);
+        } else {
+            mContext.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
     }
 
     @Override

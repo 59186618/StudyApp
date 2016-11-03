@@ -21,8 +21,7 @@
             android:theme="@style/AppTheme.Fullscreen">
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
