@@ -1,5 +1,8 @@
 package com.example.herve.Study.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.herve.Study.greendao.dao.DaoSession;
 import com.example.herve.Study.greendao.dao.QuestionBeanDao;
 import com.example.herve.Study.greendao.dao.SelectBeanDao;
@@ -10,6 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +31,7 @@ import java.util.List;
  * 教师出的的试题
  * */
 @Entity
-public class QuestionBean {
+public class QuestionBean implements Parcelable {
     @Id(autoincrement = true)
     private Long id;//数据库ID
     private String question;//问题
@@ -167,4 +171,44 @@ public class QuestionBean {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.question);
+        dest.writeList(this.selectBeens);
+        dest.writeString(this.solution);
+        dest.writeString(this.answerKey);
+        dest.writeInt(this.score);
+        dest.writeInt(this.difficulty);
+        dest.writeInt(this.type);
+    }
+
+    protected QuestionBean(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.question = in.readString();
+        this.selectBeens = new ArrayList<SelectBean>();
+        in.readList(this.selectBeens, SelectBean.class.getClassLoader());
+        this.solution = in.readString();
+        this.answerKey = in.readString();
+        this.score = in.readInt();
+        this.difficulty = in.readInt();
+        this.type = in.readInt();
+    }
+
+    public static final Creator<QuestionBean> CREATOR = new Creator<QuestionBean>() {
+        @Override
+        public QuestionBean createFromParcel(Parcel source) {
+            return new QuestionBean(source);
+        }
+
+        @Override
+        public QuestionBean[] newArray(int size) {
+            return new QuestionBean[size];
+        }
+    };
 }

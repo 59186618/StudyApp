@@ -1,5 +1,8 @@
 package com.example.herve.Study.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.herve.Study.greendao.dao.AnswerBeanDao;
 import com.example.herve.Study.greendao.dao.DaoSession;
 import com.example.herve.Study.greendao.dao.SelectBeanDao;
@@ -10,6 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +30,7 @@ import java.util.List;
 * 学生所选单题目对应的选项
 * */
 @Entity
-public class AnswerBean {
+public class AnswerBean implements Parcelable {
     @Id(autoincrement = true)
     private Long answerId;//数据库ID
 
@@ -129,4 +133,32 @@ public class AnswerBean {
         myDao = daoSession != null ? daoSession.getAnswerBeanDao() : null;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.answerId);
+        dest.writeList(this.selectBeens);
+    }
+
+    protected AnswerBean(Parcel in) {
+        this.answerId = (Long) in.readValue(Long.class.getClassLoader());
+        this.selectBeens = new ArrayList<SelectBean>();
+        in.readList(this.selectBeens, SelectBean.class.getClassLoader());
+    }
+
+    public static final Creator<AnswerBean> CREATOR = new Creator<AnswerBean>() {
+        @Override
+        public AnswerBean createFromParcel(Parcel source) {
+            return new AnswerBean(source);
+        }
+
+        @Override
+        public AnswerBean[] newArray(int size) {
+            return new AnswerBean[size];
+        }
+    };
 }

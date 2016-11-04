@@ -31,8 +31,8 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         public final static Property Select = new Property(1, String.class, "select", false, "SELECT");
     }
 
-    private Query<SelectBean> questionBean_SelectBeensQuery;
     private Query<SelectBean> answerBean_SelectBeensQuery;
+    private Query<SelectBean> questionBean_SelectBeensQuery;
 
     public SelectBeanDao(DaoConfig config) {
         super(config);
@@ -131,20 +131,6 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "selectBeens" to-many relationship of QuestionBean. */
-    public List<SelectBean> _queryQuestionBean_SelectBeens(Long selectId) {
-        synchronized (this) {
-            if (questionBean_SelectBeensQuery == null) {
-                QueryBuilder<SelectBean> queryBuilder = queryBuilder();
-                queryBuilder.where(Properties.SelectId.eq(null));
-                questionBean_SelectBeensQuery = queryBuilder.build();
-            }
-        }
-        Query<SelectBean> query = questionBean_SelectBeensQuery.forCurrentThread();
-        query.setParameter(0, selectId);
-        return query.list();
-    }
-
     /** Internal query to resolve the "selectBeens" to-many relationship of AnswerBean. */
     public List<SelectBean> _queryAnswerBean_SelectBeens(Long selectId) {
         synchronized (this) {
@@ -155,6 +141,20 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
             }
         }
         Query<SelectBean> query = answerBean_SelectBeensQuery.forCurrentThread();
+        query.setParameter(0, selectId);
+        return query.list();
+    }
+
+    /** Internal query to resolve the "selectBeens" to-many relationship of QuestionBean. */
+    public List<SelectBean> _queryQuestionBean_SelectBeens(Long selectId) {
+        synchronized (this) {
+            if (questionBean_SelectBeensQuery == null) {
+                QueryBuilder<SelectBean> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.SelectId.eq(null));
+                questionBean_SelectBeensQuery = queryBuilder.build();
+            }
+        }
+        Query<SelectBean> query = questionBean_SelectBeensQuery.forCurrentThread();
         query.setParameter(0, selectId);
         return query.list();
     }

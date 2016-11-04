@@ -10,6 +10,9 @@ package com.example.herve.Study.bean;
  * @ version
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -19,7 +22,7 @@ import org.greenrobot.greendao.annotation.Id;
  */
 
 @Entity
-public class CurriculumBean {
+public class CurriculumBean implements Parcelable {
     @Id(autoincrement = true)
     private Long id;//数据库ID
     private int curriculumId;//课程ID
@@ -69,4 +72,37 @@ public class CurriculumBean {
         this.teacher = teacher;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeInt(this.curriculumId);
+        dest.writeInt(this.resId);
+        dest.writeString(this.curriculumName);
+        dest.writeString(this.teacher);
+    }
+
+    protected CurriculumBean(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.curriculumId = in.readInt();
+        this.resId = in.readInt();
+        this.curriculumName = in.readString();
+        this.teacher = in.readString();
+    }
+
+    public static final Creator<CurriculumBean> CREATOR = new Creator<CurriculumBean>() {
+        @Override
+        public CurriculumBean createFromParcel(Parcel source) {
+            return new CurriculumBean(source);
+        }
+
+        @Override
+        public CurriculumBean[] newArray(int size) {
+            return new CurriculumBean[size];
+        }
+    };
 }

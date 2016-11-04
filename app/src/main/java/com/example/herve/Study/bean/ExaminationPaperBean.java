@@ -1,5 +1,8 @@
 package com.example.herve.Study.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.herve.Study.greendao.dao.AnswerBeanDao;
 import com.example.herve.Study.greendao.dao.DaoSession;
 import com.example.herve.Study.greendao.dao.ExaminationPaperBeanDao;
@@ -26,7 +29,7 @@ import java.util.List;
  * 学生试卷
  * */
 @Entity
-public class ExaminationPaperBean {
+public class ExaminationPaperBean implements Parcelable {
     @Id(autoincrement = true)
     private Long id;//数据库ID
     private String grade;//年级
@@ -168,4 +171,39 @@ public class ExaminationPaperBean {
         myDao = daoSession != null ? daoSession.getExaminationPaperBeanDao() : null;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.grade);
+        dest.writeString(this.author);
+        dest.writeInt(this.paperDifficulty);
+        dest.writeInt(this.paperType);
+        dest.writeTypedList(this.answerBeens);
+    }
+
+    protected ExaminationPaperBean(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.grade = in.readString();
+        this.author = in.readString();
+        this.paperDifficulty = in.readInt();
+        this.paperType = in.readInt();
+        this.answerBeens = in.createTypedArrayList(AnswerBean.CREATOR);
+    }
+
+    public static final Creator<ExaminationPaperBean> CREATOR = new Creator<ExaminationPaperBean>() {
+        @Override
+        public ExaminationPaperBean createFromParcel(Parcel source) {
+            return new ExaminationPaperBean(source);
+        }
+
+        @Override
+        public ExaminationPaperBean[] newArray(int size) {
+            return new ExaminationPaperBean[size];
+        }
+    };
 }

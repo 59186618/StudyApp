@@ -12,8 +12,7 @@
         android:id="@+id/iv_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/beautiful_girl"/>
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imageView"

@@ -10,12 +10,15 @@ package com.example.herve.Study.bean;
  * @ version
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
 @Entity
-public class User {
+public class User  implements Parcelable {
     @Id(autoincrement = true)
     private Long id;//数据库ID
     private String userId;//账号ID
@@ -178,6 +181,57 @@ public class User {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.userId);
+        dest.writeString(this.passWord);
+        dest.writeString(this.name);
+        dest.writeString(this.age);
+        dest.writeByte(this.sex ? (byte) 1 : (byte) 0);
+        dest.writeInt(this.Identity);
+        dest.writeString(this.duties);
+        dest.writeInt(this.grade);
+        dest.writeString(this.headTeacher);
+        dest.writeString(this.fiduciary);
+        dest.writeString(this.father);
+        dest.writeString(this.mother);
+        dest.writeString(this.characterization);
+    }
+
+    protected User(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.userId = in.readString();
+        this.passWord = in.readString();
+        this.name = in.readString();
+        this.age = in.readString();
+        this.sex = in.readByte() != 0;
+        this.Identity = in.readInt();
+        this.duties = in.readString();
+        this.grade = in.readInt();
+        this.headTeacher = in.readString();
+        this.fiduciary = in.readString();
+        this.father = in.readString();
+        this.mother = in.readString();
+        this.characterization = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }
 
 

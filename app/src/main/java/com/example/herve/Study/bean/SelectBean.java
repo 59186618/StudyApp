@@ -10,6 +10,9 @@ package com.example.herve.Study.bean;
  * @ version
  */
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -18,7 +21,7 @@ import org.greenrobot.greendao.annotation.Id;
  * 学生选的试题的某一个选项
  * */
 @Entity
-public class SelectBean {
+public class SelectBean implements Parcelable {
     @Id(autoincrement = true)
     private Long selectId;//数据库ID
     private String select;
@@ -43,4 +46,31 @@ public class SelectBean {
         this.select = select;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.selectId);
+        dest.writeString(this.select);
+    }
+
+    protected SelectBean(Parcel in) {
+        this.selectId = (Long) in.readValue(Long.class.getClassLoader());
+        this.select = in.readString();
+    }
+
+    public static final Creator<SelectBean> CREATOR = new Creator<SelectBean>() {
+        @Override
+        public SelectBean createFromParcel(Parcel source) {
+            return new SelectBean(source);
+        }
+
+        @Override
+        public SelectBean[] newArray(int size) {
+            return new SelectBean[size];
+        }
+    };
 }
