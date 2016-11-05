@@ -29,6 +29,7 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
     public static class Properties {
         public final static Property SelectId = new Property(0, Long.class, "selectId", true, "_id");
         public final static Property Select = new Property(1, String.class, "select", false, "SELECT");
+        public final static Property SelectString = new Property(2, String.class, "selectString", false, "SELECT_STRING");
     }
 
     private Query<SelectBean> answerBean_SelectBeensQuery;
@@ -47,7 +48,8 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"SELECT_BEAN\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: selectId
-                "\"SELECT\" TEXT);"); // 1: select
+                "\"SELECT\" TEXT," + // 1: select
+                "\"SELECT_STRING\" TEXT);"); // 2: selectString
     }
 
     /** Drops the underlying database table. */
@@ -69,6 +71,11 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         if (select != null) {
             stmt.bindString(2, select);
         }
+ 
+        String selectString = entity.getSelectString();
+        if (selectString != null) {
+            stmt.bindString(3, selectString);
+        }
     }
 
     @Override
@@ -84,6 +91,11 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         if (select != null) {
             stmt.bindString(2, select);
         }
+ 
+        String selectString = entity.getSelectString();
+        if (selectString != null) {
+            stmt.bindString(3, selectString);
+        }
     }
 
     @Override
@@ -95,7 +107,8 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
     public SelectBean readEntity(Cursor cursor, int offset) {
         SelectBean entity = new SelectBean( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // selectId
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // select
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // select
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // selectString
         );
         return entity;
     }
@@ -104,6 +117,7 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
     public void readEntity(Cursor cursor, SelectBean entity, int offset) {
         entity.setSelectId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setSelect(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setSelectString(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     @Override

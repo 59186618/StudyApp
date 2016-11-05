@@ -24,11 +24,13 @@ public class SelectBean implements BaseBean {
     @Id
     private Long selectId;//数据库ID
     private String select;
+    private String selectString;
 
-    @Generated(hash = 512626433)
-    public SelectBean(Long selectId, String select) {
+    @Generated(hash = 1491941072)
+    public SelectBean(Long selectId, String select, String selectString) {
         this.selectId = selectId;
         this.select = select;
+        this.selectString = selectString;
     }
 
     @Generated(hash = 1885432946)
@@ -60,6 +62,14 @@ public class SelectBean implements BaseBean {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.selectId);
         dest.writeString(this.select);
+    }
+
+    public String getSelectString() {
+        return this.selectString;
+    }
+
+    public void setSelectString(String selectString) {
+        this.selectString = selectString;
     }
 
     protected SelectBean(Parcel in) {

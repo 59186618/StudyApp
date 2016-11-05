@@ -1,6 +1,7 @@
 package com.example.herve.Study.ui.curriculum.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.AppCompatCheckedTextView;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.LayoutInflater;
@@ -12,8 +13,12 @@ import android.widget.TextView;
 import com.example.bannerlibrary.BannerPagerAdapter;
 import com.example.herve.Study.R;
 import com.example.herve.Study.bean.QuestionBean;
+import com.example.herve.Study.bean.SelectBean;
 
 import java.util.List;
+
+import rx.Observable;
+import rx.functions.Action1;
 
 /**
  * Created           :Herve on 2016/10/30.
@@ -37,6 +42,8 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
     @Override
     public View setView(ViewGroup container, int position) {
 
+        QuestionBean questionBean = mData.get(position);
+
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_banner_question_layout, null);
 
 
@@ -58,6 +65,25 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
         AppCompatCheckedTextView tvSolution = (AppCompatCheckedTextView) itemView.findViewById(R.id.tv_solution);
 
 
+        tvQuestion.setText(questionBean.getQuestion());
+        for (int i = 0; i < questionBean.getSelectBeans().size(); i++) {
+            SelectBean selectBean = questionBean.getSelectBeans().get(i);
+            if (i == 0) {
+                tvSelectA.setText(selectBean.getSelectString());
+            }
+            if (i == 1) {
+                tvSelectB.setText(selectBean.getSelectString());
+            }
+            if (i == 2) {
+                tvSelectC.setText(selectBean.getSelectString());
+            }
+            if (i == 3) {
+                tvSelectD.setText(selectBean.getSelectString());
+            }
+
+        }
+
+
         setTag(llSelectA, "A");
         setTag(llSelectB, "B");
         setTag(llSelectC, "C");
@@ -71,10 +97,11 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
         return itemView;
     }
 
-    private void setListener(final TextView tvQuestion, View tvSelect) {
+    private void setListener(final TextView tvQuestion, final View tvSelect) {
         tvSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 tvQuestion.append("( " + (String) view.getTag() + " )");
             }
         });
@@ -84,7 +111,6 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
 
     private void setTag(View selectView, String tag) {
         selectView.setTag(tag);
-
 
     }
 

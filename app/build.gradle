@@ -67,12 +67,12 @@ dependencies {
     /*Json解析工具*/
     compile 'com.alibaba:fastjson:1.1.54.android'
     /*RxJava*/
-//    compile 'io.reactivex:rxandroid:1.2.1'
-//    compile 'io.reactivex:rxjava:1.1.6'
-//    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-//    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-//    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
-//    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     /*极光推送------------------依据官网指导:[http://docs.jiguang.cn/jpush/client/Android/android_guide/]*/
     //    compile 'cn.jiguang:jpush:2.1.9'
     /*GreenDAO数据库------------依据博客地址：[http://www.jianshu.com/p/853401a7d02b]*/
