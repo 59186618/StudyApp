@@ -34,12 +34,13 @@ public class QuestionBean implements BaseBean {
     private Long questionId;//数据库ID
     private String question;//问题
     @ToMany(referencedJoinProperty = "selectId")
-    private List<SelectBean> selectBeens;//选项
+    private List<SelectBean> selectBeans;//选项
     private String solution;//解析
     private String answerKey;//正确答案
     private int score;//分数
     private int difficulty;//难度等级
     private int type;//类型
+
 
     @Override
     public int describeContents() {
@@ -50,7 +51,7 @@ public class QuestionBean implements BaseBean {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.questionId);
         dest.writeString(this.question);
-        dest.writeTypedList(this.selectBeens);
+        dest.writeTypedList(this.selectBeans);
         dest.writeString(this.solution);
         dest.writeString(this.answerKey);
         dest.writeInt(this.score);
@@ -114,35 +115,37 @@ public class QuestionBean implements BaseBean {
         this.type = type;
     }
 
+    public void setSelectBeans(List<SelectBean> selectBeans) {
+        this.selectBeans = selectBeans;
+    }
+
     /**
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 1220594899)
-    public List<SelectBean> getSelectBeens() {
-        if (selectBeens == null) {
+    @Generated(hash = 1540854847)
+    public List<SelectBean> getSelectBeans() {
+        if (selectBeans == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
             SelectBeanDao targetDao = daoSession.getSelectBeanDao();
-            List<SelectBean> selectBeensNew = targetDao
-                    ._queryQuestionBean_SelectBeens(questionId);
+            List<SelectBean> selectBeansNew = targetDao
+                    ._queryQuestionBean_SelectBeans(questionId);
             synchronized (this) {
-                if (selectBeens == null) {
-                    selectBeens = selectBeensNew;
+                if (selectBeans == null) {
+                    selectBeans = selectBeansNew;
                 }
             }
         }
-        return selectBeens;
+        return selectBeans;
     }
 
-    /**
-     * Resets a to-many relationship, making the next get call to query for a fresh result.
-     */
-    @Generated(hash = 725077886)
-    public synchronized void resetSelectBeens() {
-        selectBeens = null;
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    @Generated(hash = 487366468)
+    public synchronized void resetSelectBeans() {
+        selectBeans = null;
     }
 
     /**
@@ -181,9 +184,7 @@ public class QuestionBean implements BaseBean {
         myDao.update(this);
     }
 
-    /**
-     * called by internal mechanisms, do not call yourself.
-     */
+    /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 45468637)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
@@ -196,7 +197,7 @@ public class QuestionBean implements BaseBean {
     protected QuestionBean(Parcel in) {
         this.questionId = (Long) in.readValue(Long.class.getClassLoader());
         this.question = in.readString();
-        this.selectBeens = in.createTypedArrayList(SelectBean.CREATOR);
+        this.selectBeans = in.createTypedArrayList(SelectBean.CREATOR);
         this.solution = in.readString();
         this.answerKey = in.readString();
         this.score = in.readInt();
@@ -206,7 +207,7 @@ public class QuestionBean implements BaseBean {
 
     @Generated(hash = 345654034)
     public QuestionBean(Long questionId, String question, String solution, String answerKey,
-                        int score, int difficulty, int type) {
+            int score, int difficulty, int type) {
         this.questionId = questionId;
         this.question = question;
         this.solution = solution;
@@ -227,14 +228,10 @@ public class QuestionBean implements BaseBean {
             return new QuestionBean[size];
         }
     };
-    /**
-     * Used to resolve relations
-     */
+    /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-    /**
-     * Used for active entity operations.
-     */
+    /** Used for active entity operations. */
     @Generated(hash = 170334476)
     private transient QuestionBeanDao myDao;
 }

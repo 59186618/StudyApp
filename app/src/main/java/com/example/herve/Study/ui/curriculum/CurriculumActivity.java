@@ -13,12 +13,12 @@ import com.bumptech.glide.Glide;
 import com.example.bannerlibrary.Banner;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseActivity;
-import com.example.herve.Study.bean.QuestionBean;
+import com.example.herve.Study.bean.ExaminationPaperBean;
 import com.example.herve.Study.ui.curriculum.adapter.CurriculumBannerAdapter;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumConstant;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumPresenter;
-
-import java.util.ArrayList;
+import com.example.herve.Study.utils.fastjson.FastJsonParser;
+import com.example.herve.Study.utils.string.StringUtils;
 
 import butterknife.BindView;
 
@@ -123,12 +123,11 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
 
     @Override
     public void success() {
+        String jsonDta = StringUtils.getJson(mContext, "考卷.json");
 
 
-        ArrayList<QuestionBean> datas = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            datas.add(new QuestionBean());
-        }
+        ExaminationPaperBean data = FastJsonParser.getInstance().fromJson(jsonDta, ExaminationPaperBean.class);
+
 
 //        CurriculumAdapter curriculumAdapter = new CurriculumAdapter(mContext, datas);
 //
@@ -136,7 +135,7 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
 //
 //        rvCurriculum.setAdapter(curriculumAdapter);
 
-        curriculumBannerAdapter = new CurriculumBannerAdapter(mContext, datas, false);
+        curriculumBannerAdapter = new CurriculumBannerAdapter(mContext, data.getQuestionBeans(), false);
 
         bannerCurriculum.setDot(R.drawable.btn_radio_on_holo_dark, R.drawable.btn_radio_on_disabled_holo_dark);
         bannerCurriculum.setLimited(false);

@@ -77,6 +77,7 @@ dependencies {
     //    compile 'cn.jiguang:jpush:2.1.9'
     /*GreenDAO数据库------------依据博客地址：[http://www.jianshu.com/p/853401a7d02b]*/
     compile 'org.greenrobot:greendao:3.2.0'
+    compile 'org.greenrobot:greendao-generator:3.2.0'
     compile 'com.herve.library.ui:bannerlibrary:1.0.5'
     /*内存泄漏检测工具leakcanary*/
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'

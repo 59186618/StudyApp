@@ -37,7 +37,8 @@ public class ExaminationPaperBean implements BaseBean {
     private int paperType;//试卷类型
 
     @ToMany(referencedJoinProperty = "questionId")
-    private List<QuestionBean> answerBeens;//选的答案集
+    private List<QuestionBean> questionBeans;//选的答案集
+
 
     @Override
     public int describeContents() {
@@ -51,7 +52,7 @@ public class ExaminationPaperBean implements BaseBean {
         dest.writeString(this.author);
         dest.writeInt(this.paperDifficulty);
         dest.writeInt(this.paperType);
-        dest.writeTypedList(this.answerBeens);
+        dest.writeTypedList(this.questionBeans);
     }
 
     public Long getExaminationPaperId() {
@@ -94,35 +95,37 @@ public class ExaminationPaperBean implements BaseBean {
         this.paperType = paperType;
     }
 
+    public void setQuestionBeans(List<QuestionBean> questionBeans) {
+        this.questionBeans = questionBeans;
+    }
+
     /**
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 651227800)
-    public List<QuestionBean> getAnswerBeens() {
-        if (answerBeens == null) {
+    @Generated(hash = 710981554)
+    public List<QuestionBean> getQuestionBeans() {
+        if (questionBeans == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
             QuestionBeanDao targetDao = daoSession.getQuestionBeanDao();
-            List<QuestionBean> answerBeensNew = targetDao
-                    ._queryExaminationPaperBean_AnswerBeens(examinationPaperId);
+            List<QuestionBean> questionBeansNew = targetDao
+                    ._queryExaminationPaperBean_QuestionBeans(examinationPaperId);
             synchronized (this) {
-                if (answerBeens == null) {
-                    answerBeens = answerBeensNew;
+                if (questionBeans == null) {
+                    questionBeans = questionBeansNew;
                 }
             }
         }
-        return answerBeens;
+        return questionBeans;
     }
 
-    /**
-     * Resets a to-many relationship, making the next get call to query for a fresh result.
-     */
-    @Generated(hash = 622063686)
-    public synchronized void resetAnswerBeens() {
-        answerBeens = null;
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    @Generated(hash = 1600591353)
+    public synchronized void resetQuestionBeans() {
+        questionBeans = null;
     }
 
     /**
@@ -161,9 +164,7 @@ public class ExaminationPaperBean implements BaseBean {
         myDao.update(this);
     }
 
-    /**
-     * called by internal mechanisms, do not call yourself.
-     */
+    /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 756318017)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
@@ -179,12 +180,12 @@ public class ExaminationPaperBean implements BaseBean {
         this.author = in.readString();
         this.paperDifficulty = in.readInt();
         this.paperType = in.readInt();
-        this.answerBeens = in.createTypedArrayList(QuestionBean.CREATOR);
+        this.questionBeans = in.createTypedArrayList(QuestionBean.CREATOR);
     }
 
     @Generated(hash = 2060623054)
     public ExaminationPaperBean(Long examinationPaperId, String grade, String author,
-                                int paperDifficulty, int paperType) {
+            int paperDifficulty, int paperType) {
         this.examinationPaperId = examinationPaperId;
         this.grade = grade;
         this.author = author;
@@ -203,14 +204,10 @@ public class ExaminationPaperBean implements BaseBean {
             return new ExaminationPaperBean[size];
         }
     };
-    /**
-     * Used to resolve relations
-     */
+    /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-    /**
-     * Used for active entity operations.
-     */
+    /** Used for active entity operations. */
     @Generated(hash = 1747032759)
     private transient ExaminationPaperBeanDao myDao;
 }

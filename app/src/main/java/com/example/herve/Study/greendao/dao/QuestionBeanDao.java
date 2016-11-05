@@ -38,7 +38,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
 
     private DaoSession daoSession;
 
-    private Query<QuestionBean> examinationPaperBean_AnswerBeensQuery;
+    private Query<QuestionBean> examinationPaperBean_QuestionBeansQuery;
 
     public QuestionBeanDao(DaoConfig config) {
         super(config);
@@ -185,16 +185,16 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "answerBeens" to-many relationship of ExaminationPaperBean. */
-    public List<QuestionBean> _queryExaminationPaperBean_AnswerBeens(Long questionId) {
+    /** Internal query to resolve the "questionBeans" to-many relationship of ExaminationPaperBean. */
+    public List<QuestionBean> _queryExaminationPaperBean_QuestionBeans(Long questionId) {
         synchronized (this) {
-            if (examinationPaperBean_AnswerBeensQuery == null) {
+            if (examinationPaperBean_QuestionBeansQuery == null) {
                 QueryBuilder<QuestionBean> queryBuilder = queryBuilder();
                 queryBuilder.where(Properties.QuestionId.eq(null));
-                examinationPaperBean_AnswerBeensQuery = queryBuilder.build();
+                examinationPaperBean_QuestionBeansQuery = queryBuilder.build();
             }
         }
-        Query<QuestionBean> query = examinationPaperBean_AnswerBeensQuery.forCurrentThread();
+        Query<QuestionBean> query = examinationPaperBean_QuestionBeansQuery.forCurrentThread();
         query.setParameter(0, questionId);
         return query.list();
     }
