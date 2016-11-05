@@ -5,22 +5,27 @@
     "headTeacher": "一年级",
     "curriculumBeans": [
       {
+        "curriculumId": 1,
         "resId": 1,
         "curriculumName": "语文"
       },
       {
+        "curriculumId": 2,
         "resId": 1,
         "curriculumName": "数学"
       },
       {
+        "curriculumId": 3,
         "resId": 1,
         "curriculumName": "自然"
       },
       {
+        "curriculumId": 4,
         "resId": 1,
         "curriculumName": "音乐"
       },
       {
+        "curriculumId": 5,
         "resId": 1,
         "curriculumName": "体育"
       }
@@ -32,30 +37,37 @@
     "headTeacher": "一年级",
     "curriculumBeans": [
       {
+        "curriculumId": 1,
         "resId": 1,
         "curriculumName": "语文"
       },
       {
+        "curriculumId": 2,
         "resId": 1,
         "curriculumName": "数学"
       },
       {
+        "curriculumId": 3,
         "resId": 1,
         "curriculumName": "英语"
       },
       {
+        "curriculumId": 4,
         "resId": 1,
         "curriculumName": "自然"
       },
       {
+        "curriculumId": 5,
         "resId": 1,
         "curriculumName": "音乐"
       },
       {
+        "curriculumId": 6,
         "resId": 1,
         "curriculumName": "绘画"
       },
       {
+        "curriculumId": 7,
         "resId": 1,
         "curriculumName": "体育"
       }
@@ -67,30 +79,37 @@
     "headTeacher": "一年级",
     "curriculumBeans": [
       {
+        "curriculumId": 1,
         "resId": 1,
         "curriculumName": "语文"
       },
       {
+        "curriculumId": 2,
         "resId": 1,
         "curriculumName": "数学"
       },
       {
+        "curriculumId": 3,
         "resId": 1,
         "curriculumName": "英语"
       },
       {
+        "curriculumId": 4,
         "resId": 1,
         "curriculumName": "自然"
       },
       {
+        "curriculumId": 5,
         "resId": 1,
         "curriculumName": "音乐"
       },
       {
+        "curriculumId": 6,
         "resId": 1,
         "curriculumName": "绘画"
       },
       {
+        "curriculumId": 7,
         "resId": 1,
         "curriculumName": "体育"
       }
@@ -102,30 +121,37 @@
     "headTeacher": "一年级",
     "curriculumBeans": [
       {
+        "curriculumId": 1,
         "resId": 1,
         "curriculumName": "语文"
       },
       {
+        "curriculumId": 2,
         "resId": 1,
         "curriculumName": "数学"
       },
       {
+        "curriculumId": 3,
         "resId": 1,
         "curriculumName": "英语"
       },
       {
+        "curriculumId": 4,
         "resId": 1,
         "curriculumName": "自然"
       },
       {
+        "curriculumId": 5,
         "resId": 1,
         "curriculumName": "音乐"
       },
       {
+        "curriculumId": 6,
         "resId": 1,
         "curriculumName": "绘画"
       },
       {
+        "curriculumId": 7,
         "resId": 1,
         "curriculumName": "体育"
       }
@@ -137,18 +163,22 @@
     "headTeacher": "一年级",
     "curriculumBeans": [
       {
+        "curriculumId": 1,
         "resId": 1,
         "curriculumName": "语文"
       },
       {
+        "curriculumId": 2,
         "resId": 1,
         "curriculumName": "数学"
       },
       {
+        "curriculumId": 3,
         "resId": 1,
         "curriculumName": "英语"
       },
       {
+        "curriculumId": 4,
         "resId": 1,
         "curriculumName": "自然"
       }

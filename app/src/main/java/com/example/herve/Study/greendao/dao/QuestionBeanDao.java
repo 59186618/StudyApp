@@ -1,5 +1,6 @@
 package com.example.herve.Study.greendao.dao;
 
+import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
@@ -8,6 +9,8 @@ import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
+import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.example.herve.Study.bean.QuestionBean;
 
@@ -24,7 +27,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property QuestionId = new Property(0, Long.class, "questionId", true, "_id");
         public final static Property Question = new Property(1, String.class, "question", false, "QUESTION");
         public final static Property Solution = new Property(2, String.class, "solution", false, "SOLUTION");
         public final static Property AnswerKey = new Property(3, String.class, "answerKey", false, "ANSWER_KEY");
@@ -35,6 +38,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
 
     private DaoSession daoSession;
 
+    private Query<QuestionBean> examinationPaperBean_AnswerBeensQuery;
 
     public QuestionBeanDao(DaoConfig config) {
         super(config);
@@ -49,7 +53,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"QUESTION_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: questionId
                 "\"QUESTION\" TEXT," + // 1: question
                 "\"SOLUTION\" TEXT," + // 2: solution
                 "\"ANSWER_KEY\" TEXT," + // 3: answerKey
@@ -68,9 +72,9 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
     protected final void bindValues(DatabaseStatement stmt, QuestionBean entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long questionId = entity.getQuestionId();
+        if (questionId != null) {
+            stmt.bindLong(1, questionId);
         }
  
         String question = entity.getQuestion();
@@ -96,9 +100,9 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
     protected final void bindValues(SQLiteStatement stmt, QuestionBean entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long questionId = entity.getQuestionId();
+        if (questionId != null) {
+            stmt.bindLong(1, questionId);
         }
  
         String question = entity.getQuestion();
@@ -134,7 +138,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
     @Override
     public QuestionBean readEntity(Cursor cursor, int offset) {
         QuestionBean entity = new QuestionBean( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // questionId
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // question
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // solution
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // answerKey
@@ -147,7 +151,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
      
     @Override
     public void readEntity(Cursor cursor, QuestionBean entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setQuestionId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setQuestion(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setSolution(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setAnswerKey(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
@@ -158,14 +162,14 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
     
     @Override
     protected final Long updateKeyAfterInsert(QuestionBean entity, long rowId) {
-        entity.setId(rowId);
+        entity.setQuestionId(rowId);
         return rowId;
     }
     
     @Override
     public Long getKey(QuestionBean entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getQuestionId();
         } else {
             return null;
         }
@@ -173,7 +177,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
 
     @Override
     public boolean hasKey(QuestionBean entity) {
-        return entity.getId() != null;
+        return entity.getQuestionId() != null;
     }
 
     @Override
@@ -181,4 +185,18 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
         return true;
     }
     
+    /** Internal query to resolve the "answerBeens" to-many relationship of ExaminationPaperBean. */
+    public List<QuestionBean> _queryExaminationPaperBean_AnswerBeens(Long questionId) {
+        synchronized (this) {
+            if (examinationPaperBean_AnswerBeensQuery == null) {
+                QueryBuilder<QuestionBean> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.QuestionId.eq(null));
+                examinationPaperBean_AnswerBeensQuery = queryBuilder.build();
+            }
+        }
+        Query<QuestionBean> query = examinationPaperBean_AnswerBeensQuery.forCurrentThread();
+        query.setParameter(0, questionId);
+        return query.list();
+    }
+
 }

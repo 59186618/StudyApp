@@ -1,5 +1,6 @@
 package com.example.herve.Study.greendao.dao;
 
+import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
@@ -8,6 +9,8 @@ import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
+import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.example.herve.Study.bean.CurriculumBean;
 
@@ -24,13 +27,13 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property CurriculumId = new Property(1, int.class, "curriculumId", false, "CURRICULUM_ID");
-        public final static Property ResId = new Property(2, int.class, "resId", false, "RES_ID");
-        public final static Property CurriculumName = new Property(3, String.class, "curriculumName", false, "CURRICULUM_NAME");
-        public final static Property Teacher = new Property(4, String.class, "teacher", false, "TEACHER");
+        public final static Property CurriculumId = new Property(0, Long.class, "curriculumId", true, "_id");
+        public final static Property ResId = new Property(1, int.class, "resId", false, "RES_ID");
+        public final static Property CurriculumName = new Property(2, String.class, "curriculumName", false, "CURRICULUM_NAME");
+        public final static Property Teacher = new Property(3, String.class, "teacher", false, "TEACHER");
     }
 
+    private Query<CurriculumBean> gradeBean_CurriculumBeansQuery;
 
     public CurriculumBeanDao(DaoConfig config) {
         super(config);
@@ -44,11 +47,10 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CURRICULUM_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"CURRICULUM_ID\" INTEGER NOT NULL ," + // 1: curriculumId
-                "\"RES_ID\" INTEGER NOT NULL ," + // 2: resId
-                "\"CURRICULUM_NAME\" TEXT," + // 3: curriculumName
-                "\"TEACHER\" TEXT);"); // 4: teacher
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: curriculumId
+                "\"RES_ID\" INTEGER NOT NULL ," + // 1: resId
+                "\"CURRICULUM_NAME\" TEXT," + // 2: curriculumName
+                "\"TEACHER\" TEXT);"); // 3: teacher
     }
 
     /** Drops the underlying database table. */
@@ -61,21 +63,20 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
     protected final void bindValues(DatabaseStatement stmt, CurriculumBean entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long curriculumId = entity.getCurriculumId();
+        if (curriculumId != null) {
+            stmt.bindLong(1, curriculumId);
         }
-        stmt.bindLong(2, entity.getCurriculumId());
-        stmt.bindLong(3, entity.getResId());
+        stmt.bindLong(2, entity.getResId());
  
         String curriculumName = entity.getCurriculumName();
         if (curriculumName != null) {
-            stmt.bindString(4, curriculumName);
+            stmt.bindString(3, curriculumName);
         }
  
         String teacher = entity.getTeacher();
         if (teacher != null) {
-            stmt.bindString(5, teacher);
+            stmt.bindString(4, teacher);
         }
     }
 
@@ -83,21 +84,20 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
     protected final void bindValues(SQLiteStatement stmt, CurriculumBean entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long curriculumId = entity.getCurriculumId();
+        if (curriculumId != null) {
+            stmt.bindLong(1, curriculumId);
         }
-        stmt.bindLong(2, entity.getCurriculumId());
-        stmt.bindLong(3, entity.getResId());
+        stmt.bindLong(2, entity.getResId());
  
         String curriculumName = entity.getCurriculumName();
         if (curriculumName != null) {
-            stmt.bindString(4, curriculumName);
+            stmt.bindString(3, curriculumName);
         }
  
         String teacher = entity.getTeacher();
         if (teacher != null) {
-            stmt.bindString(5, teacher);
+            stmt.bindString(4, teacher);
         }
     }
 
@@ -109,34 +109,32 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
     @Override
     public CurriculumBean readEntity(Cursor cursor, int offset) {
         CurriculumBean entity = new CurriculumBean( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getInt(offset + 1), // curriculumId
-            cursor.getInt(offset + 2), // resId
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // curriculumName
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // teacher
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // curriculumId
+            cursor.getInt(offset + 1), // resId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // curriculumName
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // teacher
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, CurriculumBean entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setCurriculumId(cursor.getInt(offset + 1));
-        entity.setResId(cursor.getInt(offset + 2));
-        entity.setCurriculumName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setTeacher(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setCurriculumId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setResId(cursor.getInt(offset + 1));
+        entity.setCurriculumName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setTeacher(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
      }
     
     @Override
     protected final Long updateKeyAfterInsert(CurriculumBean entity, long rowId) {
-        entity.setId(rowId);
+        entity.setCurriculumId(rowId);
         return rowId;
     }
     
     @Override
     public Long getKey(CurriculumBean entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getCurriculumId();
         } else {
             return null;
         }
@@ -144,7 +142,7 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
 
     @Override
     public boolean hasKey(CurriculumBean entity) {
-        return entity.getId() != null;
+        return entity.getCurriculumId() != null;
     }
 
     @Override
@@ -152,4 +150,18 @@ public class CurriculumBeanDao extends AbstractDao<CurriculumBean, Long> {
         return true;
     }
     
+    /** Internal query to resolve the "curriculumBeans" to-many relationship of GradeBean. */
+    public List<CurriculumBean> _queryGradeBean_CurriculumBeans(Long curriculumId) {
+        synchronized (this) {
+            if (gradeBean_CurriculumBeansQuery == null) {
+                QueryBuilder<CurriculumBean> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.CurriculumId.eq(null));
+                gradeBean_CurriculumBeansQuery = queryBuilder.build();
+            }
+        }
+        Query<CurriculumBean> query = gradeBean_CurriculumBeansQuery.forCurrentThread();
+        query.setParameter(0, curriculumId);
+        return query.list();
+    }
+
 }

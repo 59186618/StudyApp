@@ -1,6 +1,5 @@
 package com.example.herve.Study.greendao.dao;
 
-import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
@@ -9,8 +8,6 @@ import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
-import org.greenrobot.greendao.query.Query;
-import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.example.herve.Study.bean.AnswerBean;
 
@@ -32,7 +29,6 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
 
     private DaoSession daoSession;
 
-    private Query<AnswerBean> examinationPaperBean_AnswerBeensQuery;
 
     public AnswerBeanDao(DaoConfig config) {
         super(config);
@@ -47,7 +43,7 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ANSWER_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT );"); // 0: answerId
+                "\"_id\" INTEGER PRIMARY KEY );"); // 0: answerId
     }
 
     /** Drops the underlying database table. */
@@ -125,18 +121,4 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "answerBeens" to-many relationship of ExaminationPaperBean. */
-    public List<AnswerBean> _queryExaminationPaperBean_AnswerBeens(Long answerId) {
-        synchronized (this) {
-            if (examinationPaperBean_AnswerBeensQuery == null) {
-                QueryBuilder<AnswerBean> queryBuilder = queryBuilder();
-                queryBuilder.where(Properties.AnswerId.eq(null));
-                examinationPaperBean_AnswerBeensQuery = queryBuilder.build();
-            }
-        }
-        Query<AnswerBean> query = examinationPaperBean_AnswerBeensQuery.forCurrentThread();
-        query.setParameter(0, answerId);
-        return query.list();
-    }
-
 }

@@ -1,8 +1,5 @@
 package com.example.herve.Study.ui.home;
 
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -31,7 +28,6 @@ import com.example.herve.Study.ui.home.presenter.MainConstant;
 import com.example.herve.Study.ui.home.presenter.MainPresenter;
 import com.example.herve.Study.wediget.HerveTabLayout.HerveTabLayout;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -79,21 +75,7 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
             @Override
             public void onClick(View v) {
 
-                Log.i(TAG, "onClick: 缓存目录=" + Glide.getPhotoCacheDir(mContext, cacheName).getAbsolutePath());
-
-                File file = Glide.getPhotoCacheDir(mContext, cacheName);
-                if (file.exists()) {
-                    boolean success = file.delete();
-                    if (success) {
-                        Toast.makeText(mContext, "清除成功", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-
-                Custom custom=new Custom();
-                custom.execute();
-
-
+                Toast.makeText(mContext, "点击了", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -101,24 +83,6 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
 
     }
 
-
-    private class  Custom  extends AsyncTask{
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-            Glide.get(mContext).clearDiskCache();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            Glide.get(mContext).clearMemory();
-
-            Glide.with(mContext).load(cacheName).into(iv_navigation);
-
-        }
-    }
 
     @Override
     public void onBackPressed() {

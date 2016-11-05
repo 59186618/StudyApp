@@ -46,7 +46,7 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"SELECT_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: selectId
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: selectId
                 "\"SELECT\" TEXT);"); // 1: select
     }
 

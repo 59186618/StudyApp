@@ -24,7 +24,7 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property ExaminationPaperId = new Property(0, Long.class, "examinationPaperId", true, "_id");
         public final static Property Grade = new Property(1, String.class, "grade", false, "GRADE");
         public final static Property Author = new Property(2, String.class, "author", false, "AUTHOR");
         public final static Property PaperDifficulty = new Property(3, int.class, "paperDifficulty", false, "PAPER_DIFFICULTY");
@@ -47,7 +47,7 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"EXAMINATION_PAPER_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: examinationPaperId
                 "\"GRADE\" TEXT," + // 1: grade
                 "\"AUTHOR\" TEXT," + // 2: author
                 "\"PAPER_DIFFICULTY\" INTEGER NOT NULL ," + // 3: paperDifficulty
@@ -64,9 +64,9 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
     protected final void bindValues(DatabaseStatement stmt, ExaminationPaperBean entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long examinationPaperId = entity.getExaminationPaperId();
+        if (examinationPaperId != null) {
+            stmt.bindLong(1, examinationPaperId);
         }
  
         String grade = entity.getGrade();
@@ -86,9 +86,9 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
     protected final void bindValues(SQLiteStatement stmt, ExaminationPaperBean entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long examinationPaperId = entity.getExaminationPaperId();
+        if (examinationPaperId != null) {
+            stmt.bindLong(1, examinationPaperId);
         }
  
         String grade = entity.getGrade();
@@ -118,7 +118,7 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
     @Override
     public ExaminationPaperBean readEntity(Cursor cursor, int offset) {
         ExaminationPaperBean entity = new ExaminationPaperBean( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // examinationPaperId
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // grade
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // author
             cursor.getInt(offset + 3), // paperDifficulty
@@ -129,7 +129,7 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
      
     @Override
     public void readEntity(Cursor cursor, ExaminationPaperBean entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setExaminationPaperId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setGrade(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setAuthor(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setPaperDifficulty(cursor.getInt(offset + 3));
@@ -138,14 +138,14 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
     
     @Override
     protected final Long updateKeyAfterInsert(ExaminationPaperBean entity, long rowId) {
-        entity.setId(rowId);
+        entity.setExaminationPaperId(rowId);
         return rowId;
     }
     
     @Override
     public Long getKey(ExaminationPaperBean entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getExaminationPaperId();
         } else {
             return null;
         }
@@ -153,7 +153,7 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
 
     @Override
     public boolean hasKey(ExaminationPaperBean entity) {
-        return entity.getId() != null;
+        return entity.getExaminationPaperId() != null;
     }
 
     @Override

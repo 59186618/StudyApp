@@ -27,6 +27,7 @@ public class DaoMaster extends AbstractDaoMaster {
         QuestionBeanDao.createTable(db, ifNotExists);
         SelectBeanDao.createTable(db, ifNotExists);
         UserDao.createTable(db, ifNotExists);
+        GradeBeanDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -37,6 +38,7 @@ public class DaoMaster extends AbstractDaoMaster {
         QuestionBeanDao.dropTable(db, ifExists);
         SelectBeanDao.dropTable(db, ifExists);
         UserDao.dropTable(db, ifExists);
+        GradeBeanDao.dropTable(db, ifExists);
     }
 
     /**
@@ -61,6 +63,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(QuestionBeanDao.class);
         registerDaoClass(SelectBeanDao.class);
         registerDaoClass(UserDao.class);
+        registerDaoClass(GradeBeanDao.class);
     }
 
     public DaoSession newSession() {
