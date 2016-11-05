@@ -11,63 +11,51 @@ package com.example.herve.Study.bean;
  */
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * 课程类
  */
-
 @Entity
-public class CurriculumBean implements Parcelable {
-    @Id(autoincrement = true)
-    private Long id;//数据库ID
-    private int curriculumId;//课程ID
+public class CurriculumBean implements BaseBean {
+    @Id
+    private Long curriculumId;//课程ID
     private int resId;//课程图标
     private String curriculumName;//课程名字
     private String teacher;//课程任教老师
-    @Generated(hash = 183103904)
-    public CurriculumBean(Long id, int curriculumId, int resId,
-            String curriculumName, String teacher) {
-        this.id = id;
-        this.curriculumId = curriculumId;
-        this.resId = resId;
-        this.curriculumName = curriculumName;
-        this.teacher = teacher;
+
+
+    public Long getCurriculumId() {
+        return curriculumId;
     }
-    @Generated(hash = 1647895791)
-    public CurriculumBean() {
-    }
-    public Long getId() {
-        return this.id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public int getCurriculumId() {
-        return this.curriculumId;
-    }
-    public void setCurriculumId(int curriculumId) {
+
+    public void setCurriculumId(Long curriculumId) {
         this.curriculumId = curriculumId;
     }
+
     public int getResId() {
-        return this.resId;
+        return resId;
     }
+
     public void setResId(int resId) {
         this.resId = resId;
     }
+
     public String getCurriculumName() {
-        return this.curriculumName;
+        return curriculumName;
     }
+
     public void setCurriculumName(String curriculumName) {
         this.curriculumName = curriculumName;
     }
+
     public String getTeacher() {
-        return this.teacher;
+        return teacher;
     }
+
     public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
@@ -79,19 +67,29 @@ public class CurriculumBean implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(this.id);
-        dest.writeInt(this.curriculumId);
+        dest.writeValue(this.curriculumId);
         dest.writeInt(this.resId);
         dest.writeString(this.curriculumName);
         dest.writeString(this.teacher);
     }
 
+    public CurriculumBean() {
+    }
+
     protected CurriculumBean(Parcel in) {
-        this.id = (Long) in.readValue(Long.class.getClassLoader());
-        this.curriculumId = in.readInt();
+        this.curriculumId = (Long) in.readValue(Long.class.getClassLoader());
         this.resId = in.readInt();
         this.curriculumName = in.readString();
         this.teacher = in.readString();
+    }
+
+    @Generated(hash = 1348755391)
+    public CurriculumBean(Long curriculumId, int resId, String curriculumName,
+            String teacher) {
+        this.curriculumId = curriculumId;
+        this.resId = resId;
+        this.curriculumName = curriculumName;
+        this.teacher = teacher;
     }
 
     public static final Creator<CurriculumBean> CREATOR = new Creator<CurriculumBean>() {

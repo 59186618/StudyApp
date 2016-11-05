@@ -26,7 +26,7 @@ public class UserDao extends AbstractDao<User, String> {
     public static class Properties {
         public final static Property UserId = new Property(0, String.class, "userId", true, "USER_ID");
         public final static Property PassWord = new Property(1, String.class, "passWord", false, "PASS_WORD");
-        public final static Property Name = new Property(2, String.class, "name", false, "NAME");
+        public final static Property UserName = new Property(2, String.class, "userName", false, "USER_NAME");
         public final static Property Age = new Property(3, String.class, "age", false, "AGE");
         public final static Property Sex = new Property(4, boolean.class, "sex", false, "SEX");
         public final static Property Identity = new Property(5, int.class, "Identity", false, "IDENTITY");
@@ -54,7 +54,7 @@ public class UserDao extends AbstractDao<User, String> {
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
                 "\"USER_ID\" TEXT PRIMARY KEY NOT NULL ," + // 0: userId
                 "\"PASS_WORD\" TEXT," + // 1: passWord
-                "\"NAME\" TEXT," + // 2: name
+                "\"USER_NAME\" TEXT," + // 2: userName
                 "\"AGE\" TEXT," + // 3: age
                 "\"SEX\" INTEGER NOT NULL ," + // 4: sex
                 "\"IDENTITY\" INTEGER NOT NULL ," + // 5: Identity
@@ -87,9 +87,9 @@ public class UserDao extends AbstractDao<User, String> {
             stmt.bindString(2, passWord);
         }
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(3, name);
+        String userName = entity.getUserName();
+        if (userName != null) {
+            stmt.bindString(3, userName);
         }
  
         String age = entity.getAge();
@@ -145,9 +145,9 @@ public class UserDao extends AbstractDao<User, String> {
             stmt.bindString(2, passWord);
         }
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(3, name);
+        String userName = entity.getUserName();
+        if (userName != null) {
+            stmt.bindString(3, userName);
         }
  
         String age = entity.getAge();
@@ -199,7 +199,7 @@ public class UserDao extends AbstractDao<User, String> {
         User entity = new User( //
             cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // userId
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // passWord
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // name
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // userName
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // age
             cursor.getShort(offset + 4) != 0, // sex
             cursor.getInt(offset + 5), // Identity
@@ -218,7 +218,7 @@ public class UserDao extends AbstractDao<User, String> {
     public void readEntity(Cursor cursor, User entity, int offset) {
         entity.setUserId(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
         entity.setPassWord(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setUserName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setAge(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setSex(cursor.getShort(offset + 4) != 0);
         entity.setIdentity(cursor.getInt(offset + 5));

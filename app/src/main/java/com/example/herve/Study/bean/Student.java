@@ -12,4 +12,5 @@ package com.example.herve.Study.bean;
 
 public class Student extends User {
 
+
 }

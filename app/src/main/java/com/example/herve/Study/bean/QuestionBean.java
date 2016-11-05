@@ -1,7 +1,6 @@
 package com.example.herve.Study.bean;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.example.herve.Study.greendao.dao.DaoSession;
 import com.example.herve.Study.greendao.dao.QuestionBeanDao;
@@ -13,7 +12,6 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,86 +27,98 @@ import java.util.List;
 
 /**
  * 教师出的的试题
- * */
+ */
 @Entity
-public class QuestionBean implements Parcelable {
-    @Id(autoincrement = true)
-    private Long id;//数据库ID
+public class QuestionBean implements BaseBean {
+    @Id
+    private Long questionId;//数据库ID
     private String question;//问题
     @ToMany(referencedJoinProperty = "selectId")
-    private List<SelectBean> selectBeens;//选项A
+    private List<SelectBean> selectBeens;//选项
     private String solution;//解析
     private String answerKey;//正确答案
     private int score;//分数
     private int difficulty;//难度等级
     private int type;//类型
-    /** Used to resolve relations */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-    /** Used for active entity operations. */
-    @Generated(hash = 170334476)
-    private transient QuestionBeanDao myDao;
-    @Generated(hash = 1156336696)
-    public QuestionBean(Long id, String question, String solution,
-            String answerKey, int score, int difficulty, int type) {
-        this.id = id;
-        this.question = question;
-        this.solution = solution;
-        this.answerKey = answerKey;
-        this.score = score;
-        this.difficulty = difficulty;
-        this.type = type;
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
-    @Generated(hash = 842286453)
-    public QuestionBean() {
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.questionId);
+        dest.writeString(this.question);
+        dest.writeTypedList(this.selectBeens);
+        dest.writeString(this.solution);
+        dest.writeString(this.answerKey);
+        dest.writeInt(this.score);
+        dest.writeInt(this.difficulty);
+        dest.writeInt(this.type);
     }
-    public Long getId() {
-        return this.id;
+
+    public Long getQuestionId() {
+        return this.questionId;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public void setQuestionId(Long questionId) {
+        this.questionId = questionId;
     }
+
     public String getQuestion() {
         return this.question;
     }
+
     public void setQuestion(String question) {
         this.question = question;
     }
+
     public String getSolution() {
         return this.solution;
     }
+
     public void setSolution(String solution) {
         this.solution = solution;
     }
+
     public String getAnswerKey() {
         return this.answerKey;
     }
+
     public void setAnswerKey(String answerKey) {
         this.answerKey = answerKey;
     }
+
     public int getScore() {
         return this.score;
     }
+
     public void setScore(int score) {
         this.score = score;
     }
+
     public int getDifficulty() {
         return this.difficulty;
     }
+
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
+
     public int getType() {
         return this.type;
     }
+
     public void setType(int type) {
         this.type = type;
     }
+
     /**
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 557168594)
+    @Generated(hash = 1220594899)
     public List<SelectBean> getSelectBeens() {
         if (selectBeens == null) {
             final DaoSession daoSession = this.daoSession;
@@ -116,20 +126,25 @@ public class QuestionBean implements Parcelable {
                 throw new DaoException("Entity is detached from DAO context");
             }
             SelectBeanDao targetDao = daoSession.getSelectBeanDao();
-            List<SelectBean> selectBeensNew = targetDao._queryQuestionBean_SelectBeens(id);
+            List<SelectBean> selectBeensNew = targetDao
+                    ._queryQuestionBean_SelectBeens(questionId);
             synchronized (this) {
-                if(selectBeens == null) {
+                if (selectBeens == null) {
                     selectBeens = selectBeensNew;
                 }
             }
         }
         return selectBeens;
     }
-    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+
+    /**
+     * Resets a to-many relationship, making the next get call to query for a fresh result.
+     */
     @Generated(hash = 725077886)
     public synchronized void resetSelectBeens() {
         selectBeens = null;
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
      * Entity must attached to an entity context.
@@ -141,6 +156,7 @@ public class QuestionBean implements Parcelable {
         }
         myDao.delete(this);
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
      * Entity must attached to an entity context.
@@ -152,6 +168,7 @@ public class QuestionBean implements Parcelable {
         }
         myDao.refresh(this);
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
      * Entity must attached to an entity context.
@@ -163,41 +180,40 @@ public class QuestionBean implements Parcelable {
         }
         myDao.update(this);
     }
-    /** called by internal mechanisms, do not call yourself. */
+
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 45468637)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getQuestionBeanDao() : null;
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(this.id);
-        dest.writeString(this.question);
-        dest.writeList(this.selectBeens);
-        dest.writeString(this.solution);
-        dest.writeString(this.answerKey);
-        dest.writeInt(this.score);
-        dest.writeInt(this.difficulty);
-        dest.writeInt(this.type);
+    public QuestionBean() {
     }
 
     protected QuestionBean(Parcel in) {
-        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.questionId = (Long) in.readValue(Long.class.getClassLoader());
         this.question = in.readString();
-        this.selectBeens = new ArrayList<SelectBean>();
-        in.readList(this.selectBeens, SelectBean.class.getClassLoader());
+        this.selectBeens = in.createTypedArrayList(SelectBean.CREATOR);
         this.solution = in.readString();
         this.answerKey = in.readString();
         this.score = in.readInt();
         this.difficulty = in.readInt();
         this.type = in.readInt();
+    }
+
+    @Generated(hash = 345654034)
+    public QuestionBean(Long questionId, String question, String solution, String answerKey,
+                        int score, int difficulty, int type) {
+        this.questionId = questionId;
+        this.question = question;
+        this.solution = solution;
+        this.answerKey = answerKey;
+        this.score = score;
+        this.difficulty = difficulty;
+        this.type = type;
     }
 
     public static final Creator<QuestionBean> CREATOR = new Creator<QuestionBean>() {
@@ -211,4 +227,14 @@ public class QuestionBean implements Parcelable {
             return new QuestionBean[size];
         }
     };
+    /**
+     * Used to resolve relations
+     */
+    @Generated(hash = 2040040024)
+    private transient DaoSession daoSession;
+    /**
+     * Used for active entity operations.
+     */
+    @Generated(hash = 170334476)
+    private transient QuestionBeanDao myDao;
 }

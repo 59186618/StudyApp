@@ -53,7 +53,7 @@ public class QuestionBeanDao extends AbstractDao<QuestionBean, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"QUESTION_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: questionId
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: questionId
                 "\"QUESTION\" TEXT," + // 1: question
                 "\"SOLUTION\" TEXT," + // 2: solution
                 "\"ANSWER_KEY\" TEXT," + // 3: answerKey

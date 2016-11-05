@@ -47,7 +47,7 @@ public class ExaminationPaperBeanDao extends AbstractDao<ExaminationPaperBean, L
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"EXAMINATION_PAPER_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: examinationPaperId
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: examinationPaperId
                 "\"GRADE\" TEXT," + // 1: grade
                 "\"AUTHOR\" TEXT," + // 2: author
                 "\"PAPER_DIFFICULTY\" INTEGER NOT NULL ," + // 3: paperDifficulty
