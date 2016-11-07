@@ -152,7 +152,6 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
             @Override
             public void onClick(View view) {
 
-
                 llSelectA.setBackgroundColor(Color.TRANSPARENT);
                 llSelectB.setBackgroundColor(Color.TRANSPARENT);
                 llSelectC.setBackgroundColor(Color.TRANSPARENT);
