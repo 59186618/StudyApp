@@ -22,6 +22,7 @@ public class DaoMaster extends AbstractDaoMaster {
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
         AnswerBeanDao.createTable(db, ifNotExists);
+        AnswerSheetBeanDao.createTable(db, ifNotExists);
         CurriculumBeanDao.createTable(db, ifNotExists);
         ExaminationPaperBeanDao.createTable(db, ifNotExists);
         GradeBeanDao.createTable(db, ifNotExists);
@@ -33,6 +34,7 @@ public class DaoMaster extends AbstractDaoMaster {
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
         AnswerBeanDao.dropTable(db, ifExists);
+        AnswerSheetBeanDao.dropTable(db, ifExists);
         CurriculumBeanDao.dropTable(db, ifExists);
         ExaminationPaperBeanDao.dropTable(db, ifExists);
         GradeBeanDao.dropTable(db, ifExists);
@@ -58,6 +60,7 @@ public class DaoMaster extends AbstractDaoMaster {
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
         registerDaoClass(AnswerBeanDao.class);
+        registerDaoClass(AnswerSheetBeanDao.class);
         registerDaoClass(CurriculumBeanDao.class);
         registerDaoClass(ExaminationPaperBeanDao.class);
         registerDaoClass(GradeBeanDao.class);

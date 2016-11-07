@@ -9,6 +9,7 @@ import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
 import com.example.herve.Study.bean.AnswerBean;
+import com.example.herve.Study.bean.AnswerSheetBean;
 import com.example.herve.Study.bean.CurriculumBean;
 import com.example.herve.Study.bean.ExaminationPaperBean;
 import com.example.herve.Study.bean.GradeBean;
@@ -17,6 +18,7 @@ import com.example.herve.Study.bean.SelectBean;
 import com.example.herve.Study.bean.User;
 
 import com.example.herve.Study.greendao.dao.AnswerBeanDao;
+import com.example.herve.Study.greendao.dao.AnswerSheetBeanDao;
 import com.example.herve.Study.greendao.dao.CurriculumBeanDao;
 import com.example.herve.Study.greendao.dao.ExaminationPaperBeanDao;
 import com.example.herve.Study.greendao.dao.GradeBeanDao;
@@ -34,6 +36,7 @@ import com.example.herve.Study.greendao.dao.UserDao;
 public class DaoSession extends AbstractDaoSession {
 
     private final DaoConfig answerBeanDaoConfig;
+    private final DaoConfig answerSheetBeanDaoConfig;
     private final DaoConfig curriculumBeanDaoConfig;
     private final DaoConfig examinationPaperBeanDaoConfig;
     private final DaoConfig gradeBeanDaoConfig;
@@ -42,6 +45,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig userDaoConfig;
 
     private final AnswerBeanDao answerBeanDao;
+    private final AnswerSheetBeanDao answerSheetBeanDao;
     private final CurriculumBeanDao curriculumBeanDao;
     private final ExaminationPaperBeanDao examinationPaperBeanDao;
     private final GradeBeanDao gradeBeanDao;
@@ -55,6 +59,9 @@ public class DaoSession extends AbstractDaoSession {
 
         answerBeanDaoConfig = daoConfigMap.get(AnswerBeanDao.class).clone();
         answerBeanDaoConfig.initIdentityScope(type);
+
+        answerSheetBeanDaoConfig = daoConfigMap.get(AnswerSheetBeanDao.class).clone();
+        answerSheetBeanDaoConfig.initIdentityScope(type);
 
         curriculumBeanDaoConfig = daoConfigMap.get(CurriculumBeanDao.class).clone();
         curriculumBeanDaoConfig.initIdentityScope(type);
@@ -75,6 +82,7 @@ public class DaoSession extends AbstractDaoSession {
         userDaoConfig.initIdentityScope(type);
 
         answerBeanDao = new AnswerBeanDao(answerBeanDaoConfig, this);
+        answerSheetBeanDao = new AnswerSheetBeanDao(answerSheetBeanDaoConfig, this);
         curriculumBeanDao = new CurriculumBeanDao(curriculumBeanDaoConfig, this);
         examinationPaperBeanDao = new ExaminationPaperBeanDao(examinationPaperBeanDaoConfig, this);
         gradeBeanDao = new GradeBeanDao(gradeBeanDaoConfig, this);
@@ -83,6 +91,7 @@ public class DaoSession extends AbstractDaoSession {
         userDao = new UserDao(userDaoConfig, this);
 
         registerDao(AnswerBean.class, answerBeanDao);
+        registerDao(AnswerSheetBean.class, answerSheetBeanDao);
         registerDao(CurriculumBean.class, curriculumBeanDao);
         registerDao(ExaminationPaperBean.class, examinationPaperBeanDao);
         registerDao(GradeBean.class, gradeBeanDao);
@@ -93,6 +102,7 @@ public class DaoSession extends AbstractDaoSession {
     
     public void clear() {
         answerBeanDaoConfig.clearIdentityScope();
+        answerSheetBeanDaoConfig.clearIdentityScope();
         curriculumBeanDaoConfig.clearIdentityScope();
         examinationPaperBeanDaoConfig.clearIdentityScope();
         gradeBeanDaoConfig.clearIdentityScope();
@@ -103,6 +113,10 @@ public class DaoSession extends AbstractDaoSession {
 
     public AnswerBeanDao getAnswerBeanDao() {
         return answerBeanDao;
+    }
+
+    public AnswerSheetBeanDao getAnswerSheetBeanDao() {
+        return answerSheetBeanDao;
     }
 
     public CurriculumBeanDao getCurriculumBeanDao() {

@@ -32,7 +32,7 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         public final static Property SelectString = new Property(2, String.class, "selectString", false, "SELECT_STRING");
     }
 
-    private Query<SelectBean> answerBean_SelectBeensQuery;
+    private Query<SelectBean> answerBean_SelectBeansQuery;
     private Query<SelectBean> questionBean_SelectBeansQuery;
 
     public SelectBeanDao(DaoConfig config) {
@@ -145,16 +145,16 @@ public class SelectBeanDao extends AbstractDao<SelectBean, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "selectBeens" to-many relationship of AnswerBean. */
-    public List<SelectBean> _queryAnswerBean_SelectBeens(Long selectId) {
+    /** Internal query to resolve the "selectBeans" to-many relationship of AnswerBean. */
+    public List<SelectBean> _queryAnswerBean_SelectBeans(Long selectId) {
         synchronized (this) {
-            if (answerBean_SelectBeensQuery == null) {
+            if (answerBean_SelectBeansQuery == null) {
                 QueryBuilder<SelectBean> queryBuilder = queryBuilder();
                 queryBuilder.where(Properties.SelectId.eq(null));
-                answerBean_SelectBeensQuery = queryBuilder.build();
+                answerBean_SelectBeansQuery = queryBuilder.build();
             }
         }
-        Query<SelectBean> query = answerBean_SelectBeensQuery.forCurrentThread();
+        Query<SelectBean> query = answerBean_SelectBeansQuery.forCurrentThread();
         query.setParameter(0, selectId);
         return query.list();
     }

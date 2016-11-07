@@ -6,6 +6,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
@@ -34,7 +35,7 @@ public class GradeBean implements BaseBean {
     private String headTeacher;//年级班主任
 
     @ToMany(referencedJoinProperty = "curriculumId")
-    private List<CurriculumBean> curriculumBeans;
+    private List<CurriculumBean> curriculumBeans=new ArrayList<>();;
 
 
     @Override

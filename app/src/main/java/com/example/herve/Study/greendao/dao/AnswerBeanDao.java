@@ -1,5 +1,6 @@
 package com.example.herve.Study.greendao.dao;
 
+import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
@@ -8,6 +9,8 @@ import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
+import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.example.herve.Study.bean.AnswerBean;
 
@@ -29,6 +32,7 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
 
     private DaoSession daoSession;
 
+    private Query<AnswerBean> answerSheetBean_AnswerBeansQuery;
 
     public AnswerBeanDao(DaoConfig config) {
         super(config);
@@ -121,4 +125,18 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
         return true;
     }
     
+    /** Internal query to resolve the "answerBeans" to-many relationship of AnswerSheetBean. */
+    public List<AnswerBean> _queryAnswerSheetBean_AnswerBeans(Long answerId) {
+        synchronized (this) {
+            if (answerSheetBean_AnswerBeansQuery == null) {
+                QueryBuilder<AnswerBean> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.AnswerId.eq(null));
+                answerSheetBean_AnswerBeansQuery = queryBuilder.build();
+            }
+        }
+        Query<AnswerBean> query = answerSheetBean_AnswerBeansQuery.forCurrentThread();
+        query.setParameter(0, answerId);
+        return query.list();
+    }
+
 }

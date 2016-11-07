@@ -13,7 +13,9 @@ import com.bumptech.glide.Glide;
 import com.example.bannerlibrary.Banner;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseActivity;
+import com.example.herve.Study.bean.AnswerSheetBean;
 import com.example.herve.Study.bean.ExaminationPaperBean;
+import com.example.herve.Study.common.AppConstant;
 import com.example.herve.Study.ui.curriculum.adapter.CurriculumBannerAdapter;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumConstant;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumPresenter;
@@ -123,11 +125,15 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
 
     @Override
     public void success() {
+
+
         String jsonDta = StringUtils.getJson(mContext, "考卷.json");
 
 
         ExaminationPaperBean data = FastJsonParser.getInstance().fromJson(jsonDta, ExaminationPaperBean.class);
 
+        AppConstant.answerSheetBean = new AnswerSheetBean();
+        AppConstant.examinationPaperBean = data;
 
 //        CurriculumAdapter curriculumAdapter = new CurriculumAdapter(mContext, datas);
 //

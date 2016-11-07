@@ -12,6 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class QuestionBean implements BaseBean {
     private Long questionId;//数据库ID
     private String question;//问题
     @ToMany(referencedJoinProperty = "selectId")
-    private List<SelectBean> selectBeans;//选项
+    private List<SelectBean> selectBeans=new ArrayList<>();;//选项
     private String solution;//解析
     private String answerKey;//正确答案
     private int score;//分数

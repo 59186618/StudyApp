@@ -12,6 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,18 +33,25 @@ public class AnswerBean implements BaseBean {
     @Id
     private Long answerId;//数据库ID
     @ToMany(referencedJoinProperty = "selectId")
-    private List<SelectBean> selectBeens;
+    private List<SelectBean> selectBeans = new ArrayList<>();
+    /**
+     * Used to resolve relations
+     */
+    @Generated(hash = 2040040024)
+    private transient DaoSession daoSession;
+    /**
+     * Used for active entity operations.
+     */
+    @Generated(hash = 877692854)
+    private transient AnswerBeanDao myDao;
 
-
-    @Override
-    public int describeContents() {
-        return 0;
+    @Generated(hash = 1884614436)
+    public AnswerBean(Long answerId) {
+        this.answerId = answerId;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(this.answerId);
-        dest.writeTypedList(this.selectBeens);
+    @Generated(hash = 1597358991)
+    public AnswerBean() {
     }
 
     public Long getAnswerId() {
@@ -54,35 +62,39 @@ public class AnswerBean implements BaseBean {
         this.answerId = answerId;
     }
 
+    public void setSelectBeans(List<SelectBean> selectBeans) {
+        this.selectBeans = selectBeans;
+    }
+
     /**
      * To-many relationship, resolved on first access (and after reset).
      * Changes to to-many relations are not persisted, make changes to the target entity.
      */
-    @Generated(hash = 946918270)
-    public List<SelectBean> getSelectBeens() {
-        if (selectBeens == null) {
+    @Generated(hash = 478087438)
+    public List<SelectBean> getSelectBeans() {
+        if (selectBeans == null) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
             SelectBeanDao targetDao = daoSession.getSelectBeanDao();
-            List<SelectBean> selectBeensNew = targetDao
-                    ._queryAnswerBean_SelectBeens(answerId);
+            List<SelectBean> selectBeansNew = targetDao
+                    ._queryAnswerBean_SelectBeans(answerId);
             synchronized (this) {
-                if (selectBeens == null) {
-                    selectBeens = selectBeensNew;
+                if (selectBeans == null) {
+                    selectBeans = selectBeansNew;
                 }
             }
         }
-        return selectBeens;
+        return selectBeans;
     }
 
     /**
      * Resets a to-many relationship, making the next get call to query for a fresh result.
      */
-    @Generated(hash = 725077886)
-    public synchronized void resetSelectBeens() {
-        selectBeens = null;
+    @Generated(hash = 487366468)
+    public synchronized void resetSelectBeans() {
+        selectBeans = null;
     }
 
     /**
@@ -130,17 +142,21 @@ public class AnswerBean implements BaseBean {
         myDao = daoSession != null ? daoSession.getAnswerBeanDao() : null;
     }
 
-    public AnswerBean() {
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.answerId);
+        dest.writeTypedList(this.selectBeans);
     }
 
     protected AnswerBean(Parcel in) {
         this.answerId = (Long) in.readValue(Long.class.getClassLoader());
-        this.selectBeens = in.createTypedArrayList(SelectBean.CREATOR);
-    }
-
-    @Generated(hash = 1884614436)
-    public AnswerBean(Long answerId) {
-        this.answerId = answerId;
+        this.selectBeans = in.createTypedArrayList(SelectBean.CREATOR);
     }
 
     public static final Creator<AnswerBean> CREATOR = new Creator<AnswerBean>() {
@@ -154,14 +170,4 @@ public class AnswerBean implements BaseBean {
             return new AnswerBean[size];
         }
     };
-    /**
-     * Used to resolve relations
-     */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-    /**
-     * Used for active entity operations.
-     */
-    @Generated(hash = 877692854)
-    private transient AnswerBeanDao myDao;
 }
