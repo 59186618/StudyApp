@@ -6,37 +6,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/drawer01"
+            android:id="@+id/drawer_home"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
+            android:title="@string/navigation_home"/>
         <item
-            android:id="@+id/drawer02"
+            android:id="@+id/drawer_tables"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
-
+            android:title="@string/navigation_tables"/>
         <item
-            android:id="@+id/drawer03"
+            android:id="@+id/drawer_collection"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
-
+            android:title="@string/navigation_collection"/>
         <item
-            android:id="@+id/drawer04"
+            android:id="@+id/drawer_error"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
+            android:title="@string/navigation_error"/>
         <item
-            android:id="@+id/drawer05"
+            android:id="@+id/drawer_nearly"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
+            android:title="@string/navigation_nearly"/>
+    </group>
+    <group
+        android:id="@+id/nav_other_setting"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/drawer06"
+            android:id="@+id/drawer_theme"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
+            android:title="@string/navigation_theme"/>
         <item
-            android:id="@+id/drawer07"
+            android:id="@+id/drawer_setting"
             android:icon="@drawable/ic_account_balance_black_24dp"
-            android:title="@string/tab_home1"/>
-
-        >
+            android:title="@string/navigation_setting"/>
+        <item
+            android:id="@+id/drawer_about"
+            android:icon="@drawable/ic_account_balance_black_24dp"
+            android:title="@string/navigation_about"/>
     </group>
 
 </menu>

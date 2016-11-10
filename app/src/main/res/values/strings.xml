@@ -1,9 +1,21 @@
 <resources>
     <string name="app_name">天天爱学习</string>
 
-    <string name="tab_home1">Tab01</string>
-    <string name="tab_home2">Tab02</string>
-    <string name="tab_home3">Tab03</string>
+    <string name="navigation_home">首页</string>
+    <string name="navigation_tables">成绩表</string>
+    <string name="navigation_collection">我的收藏</string>
+    <string name="navigation_error">错题集</string>
+    <string name="navigation_nearly">最近一次</string>
+    <string name="navigation_other">其他</string>
+    <string name="navigation_theme">主题选择</string>
+    <string name="navigation_setting">设置</string>
+    <string name="navigation_about">关于</string>
+
+    <!--右上角快捷键设置-->
+    <string name="toolbar_tab01">设置01</string>
+    <string name="toolbar_tab02">设置02</string>
+
+
 
     <string name="tv_enter">点击进入</string>
 
@@ -31,4 +43,8 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
+    <!--考卷页面-->
+    <string name="complete_paper">交卷</string>
+
 </resources>

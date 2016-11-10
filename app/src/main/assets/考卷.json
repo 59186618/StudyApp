@@ -10,7 +10,7 @@
       "question": "1,这是第一问题Android design支持库中提供的TabLayout默认把Tab的OnClickListener给写死了，但是在项目中有时候需要做一些控制处理，比如选中某一个Tab之前必须是先登录，未登录的情况需要跳转到登录界面。",
       "solution": "这是解析的答案",
       "answerKey": "A",
-      "score": 5,
+      "score": 10,
       "difficulty": 5,
       "type": 1,
       "selectBeans": [
@@ -41,7 +41,7 @@
       "question": "1,这是第二问题Android design支持库中提供的TabLayout默认把Tab的OnClickListener给写死了，但是在项目中有时候需要做一些控制处理，比如选中某一个Tab之前必须是先登录，未登录的情况需要跳转到登录界面。",
       "solution": "这是解析的答案",
       "answerKey": "B",
-      "score": 5,
+      "score": 20,
       "difficulty": 5,
       "type": 1,
       "selectBeans": [
@@ -72,7 +72,7 @@
       "question": "1,这是三问题Android design支持库中提供的TabLayout默认把Tab的OnClickListener给写死了，但是在项目中有时候需要做一些控制处理，比如选中某一个Tab之前必须是先登录，未登录的情况需要跳转到登录界面。",
       "solution": "这是解析的答案",
       "answerKey": "B",
-      "score": 5,
+      "score": 20,
       "difficulty": 5,
       "type": 1,
       "selectBeans": [
@@ -103,7 +103,7 @@
       "question": "1,这是第四问题Android design支持库中提供的TabLayout默认把Tab的OnClickListener给写死了，但是在项目中有时候需要做一些控制处理，比如选中某一个Tab之前必须是先登录，未登录的情况需要跳转到登录界面。",
       "solution": "这是解析的答案",
       "answerKey": "B",
-      "score": 5,
+      "score": 50,
       "difficulty": 5,
       "type": 1,
       "selectBeans": [

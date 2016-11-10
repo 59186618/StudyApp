@@ -61,20 +61,22 @@
     <color name="accent">@color/primary</color>
     <!--主题颜色-->
 
+    <!--主题控件颜色-->
+    <color name="textColor">@color/grey_f5</color>
+    <color name="textColorSecondary">@color/darkBackGround</color>
+    <color name="icon">@color/deep_purple_accent</color>
+    <color name="divider">@color/deep_purple_primary</color>
+    <!--主题控件颜色-->
 
     <!--default-->
     <!--<color name="colorPrimary2">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark2">#303F9F</color>-->
     <color name="window_background">#00897b</color>
 
-    <!--other-->
-    <color name="darkBackGround">#181617</color>
-    <color name="darkEdit">#3d3b3c</color>
-    <color name="transparent">#00ffffff</color>
-
 
     <!--material color-->
     <color name="red">#e51c23</color>
+    <color name="white">#e51c23</color>
     <color name="slight_red">#f9bdbd</color>
     <color name="orange">#ff9800</color>
     <color name="grey_f5">#f5f5f5</color>
@@ -87,7 +89,12 @@
     <color name="purple_ba68c8">#ba68c8</color>
     <color name="purple_ce93d8">#ce93d8</color>
 
+
     <!--other-->
+    <color name="darkBackGround">#181617</color>
+    <color name="darkEdit">#3d3b3c</color>
+    <color name="transparent">#00ffffff</color>
+
     <color name="template_green">#212021</color>
 
     <color name="lifeFragment">#cf0c6d</color>

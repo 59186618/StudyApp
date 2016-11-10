@@ -4,12 +4,12 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/tab_home1"
+        android:title="@string/toolbar_tab01"
         app:showAsAction="never"/>
     <item
         android:id="@+id/action_search"
         android:orderInCategory="100"
-        android:title="@string/tab_home1"
+        android:title="@string/toolbar_tab02"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always"/>
 

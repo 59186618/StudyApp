@@ -4,18 +4,18 @@
     <item
         android:id="@+id/tab_01"
         android:icon="@drawable/ic_account_balance_black_24dp"
-        android:title="@string/tab_home1">
+        android:title="@string/toolbar_tab01">
 
     </item>
     <item
         android:id="@+id/tab_02"
         android:icon="@drawable/ic_account_box_black_24dp"
-        android:title="@string/tab_home2">
+        android:title="@string/toolbar_tab01">
 
     </item>
     <item
         android:id="@+id/tab_03"
         android:icon="@drawable/ic_account_balance_wallet_black_24dp"
-        android:title="@string/tab_home3">
+        android:title="@string/toolbar_tab01">
     </item>
 </menu>

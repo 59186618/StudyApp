@@ -15,13 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.signature.StringSignature;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.BaseFragment;
 import com.example.herve.Study.base.ui.MvpBaseActivity;
-import com.example.herve.Study.greendao.dao.ExaminationPaperBeanDao;
 import com.example.herve.Study.ui.home.Fragments.life.LifeFragment;
 import com.example.herve.Study.ui.home.adapter.FragmentsAdapter;
 import com.example.herve.Study.ui.home.presenter.MainConstant;
@@ -57,8 +56,6 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
     private FragmentsAdapter fragmentsAdapter;
     private String TAG = getClass().getSimpleName();
 
-    ExaminationPaperBeanDao examinationPaperBeanDao;
-
 
     @Override
     protected int initLayoutId() {
@@ -75,7 +72,9 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(mContext, "点击了", Toast.LENGTH_SHORT).show();
+                Glide.with(mContext).load(cacheName)
+                        .signature(new StringSignature(System.currentTimeMillis() + "50"))
+                        .into(iv_navigation);
 
             }
         });
@@ -122,19 +121,23 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.drawer01) {
+        if (id == R.id.drawer_home) {
             // Handle the camera action
-        } else if (id == R.id.drawer02) {
+        } else if (id == R.id.drawer_tables) {
 
-        } else if (id == R.id.drawer03) {
+        } else if (id == R.id.drawer_tables) {
 
-        } else if (id == R.id.drawer04) {
+        } else if (id == R.id.drawer_collection) {
 
-        } else if (id == R.id.drawer05) {
+        } else if (id == R.id.drawer_error) {
 
-        } else if (id == R.id.drawer06) {
+        } else if (id == R.id.drawer_nearly) {
 
-        } else if (id == R.id.drawer07) {
+        } else if (id == R.id.drawer_theme) {
+
+        } else if (id == R.id.drawer_setting) {
+
+        } else if (id == R.id.drawer_about) {
 
         }
 
@@ -150,7 +153,7 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.tab_home1, R.string.tab_home2);
+                this, drawerLayout, toolbar, R.string.navigation_setting, R.string.navigation_about);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -159,13 +162,18 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
     @Override
     protected void initData() {
 //        examinationPaperBeanDao= App.getApp().getDaoSession().e
-        Glide.with(mContext).load(cacheName).into(iv_navigation);
+        Glide.with(mContext).load(cacheName)
+                .signature(new StringSignature(System.currentTimeMillis() + "20"))
+                .into(iv_navigation);
 
         mPresenter.loadData();
     }
 
     @Override
     protected void initListener() {
+
+        navView.setNavigationItemSelectedListener(this);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

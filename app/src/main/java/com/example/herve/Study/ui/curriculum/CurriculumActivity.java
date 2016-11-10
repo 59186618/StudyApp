@@ -13,14 +13,19 @@ import com.bumptech.glide.Glide;
 import com.example.bannerlibrary.Banner;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseActivity;
+import com.example.herve.Study.bean.AnswerBean;
 import com.example.herve.Study.bean.AnswerSheetBean;
 import com.example.herve.Study.bean.ExaminationPaperBean;
+import com.example.herve.Study.bean.QuestionBean;
 import com.example.herve.Study.common.AppConstant;
 import com.example.herve.Study.ui.curriculum.adapter.CurriculumBannerAdapter;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumConstant;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumPresenter;
 import com.example.herve.Study.utils.fastjson.FastJsonParser;
 import com.example.herve.Study.utils.string.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -69,8 +74,25 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
         if (id == android.R.id.home) {
             finish();
         }
+        int score = 0;
         if (id == R.id.action_time_picker) {
-            showSnackToast("点击了clock");
+
+            int questionSize = AppConstant.examinationPaperBean.getQuestionBeans().size();
+
+            List<QuestionBean> questionBeans = AppConstant.examinationPaperBean.getQuestionBeans();
+            List<AnswerBean> answerBeans = AppConstant.answerSheetBean.getAnswerBeans();
+
+            for (int i = 0; i < questionSize; i++) {
+                if (answerBeans.size() > i//
+                        && answerBeans.get(i).getSelectBeans().size() > 0
+                        && questionBeans.get(i).getAnswerKey().equals(answerBeans.get(i).getSelectBeans().get(0).getSelect())) {
+                    score += questionBeans.get(i).getScore();
+                }
+
+            }
+
+
+            showSnackToast("所得分数=" + score);
             return true;
         }
 
@@ -132,7 +154,9 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
 
         ExaminationPaperBean data = FastJsonParser.getInstance().fromJson(jsonDta, ExaminationPaperBean.class);
 
-        AppConstant.answerSheetBean = new AnswerSheetBean();
+        if (AppConstant.answerSheetBean == null) {
+            AppConstant.answerSheetBean = new AnswerSheetBean();
+        }
         AppConstant.examinationPaperBean = data;
 
 //        CurriculumAdapter curriculumAdapter = new CurriculumAdapter(mContext, datas);
