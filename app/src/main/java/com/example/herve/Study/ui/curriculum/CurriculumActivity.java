@@ -1,5 +1,6 @@
 package com.example.herve.Study.ui.curriculum;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatImageView;
@@ -21,6 +22,7 @@ import com.example.herve.Study.common.AppConstant;
 import com.example.herve.Study.ui.curriculum.adapter.CurriculumBannerAdapter;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumConstant;
 import com.example.herve.Study.ui.curriculum.presenter.CurriculumPresenter;
+import com.example.herve.Study.ui.curriculum.score.ScoreActivity;
 import com.example.herve.Study.utils.fastjson.FastJsonParser;
 import com.example.herve.Study.utils.string.StringUtils;
 
@@ -73,25 +75,13 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
         if (id == android.R.id.home) {
             finish();
         }
-        int score = 0;
         if (id == R.id.action_time_picker) {
 
-            int questionSize = AppConstant.examinationPaperBean.getQuestionBeans().size();
 
-            List<QuestionBean> questionBeans = AppConstant.examinationPaperBean.getQuestionBeans();
-            List<AnswerBean> answerBeans = AppConstant.answerSheetBean.getAnswerBeans();
+            Intent intent = new Intent(mContext, ScoreActivity.class);
 
-            for (int i = 0; i < questionSize; i++) {
-                if (answerBeans.size() > i//
-                        && answerBeans.get(i).getSelectBeans().size() > 0
-                        && questionBeans.get(i).getAnswerKey().equals(answerBeans.get(i).getSelectBeans().get(0).getSelect())) {
-                    score += questionBeans.get(i).getScore();
-                }
+            startActivity(intent);
 
-            }
-
-
-            showSnackToast("所得分数=" + score);
             return true;
         }
 

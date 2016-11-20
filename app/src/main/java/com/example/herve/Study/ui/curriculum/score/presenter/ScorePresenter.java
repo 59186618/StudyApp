@@ -16,4 +16,11 @@ public class ScorePresenter extends MvpBasePresenter<ScoreConstant.PresenterView
     public ScorePresenter(ScoreConstant.PresenterView mPresenter) {
         super(mPresenter);
     }
+
+    @Override
+    public void loading() {
+
+        mPresenter.success();
+
+    }
 }

@@ -77,7 +77,7 @@
     <!--material color-->
     <color name="red">#e51c23</color>
     <color name="red_error">#d84315</color>
-    <color name="white">#e51c23</color>
+    <color name="white">#ffff</color>
 
     <color name="slight_red">#f9bdbd</color>
     <color name="orange">#ff9800</color>

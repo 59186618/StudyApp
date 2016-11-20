@@ -15,9 +15,10 @@ import com.example.herve.Study.base.presenter.BasePresenterView;
 public interface ScoreConstant {
 
     interface Presenter extends BasePresenter {
-
+        void loading();
     }
 
     interface PresenterView extends BasePresenterView {
+
     }
 }
