@@ -6,12 +6,12 @@
 
 首页
 
-![image text](https://github.com/lijianyou-Herve/StudyApp/apk//art/device-2016-11-20-135401.png)
+![image text](https://github.com/lijianyou-Herve/StudyApp/blob/master/apk/art/device-2016-11-20-135401.png)
 
 侧滑栏
 
-![image text](https://github.com/lijianyou-Herve/StudyApp/apk//art/device-2016-11-20-135419.png)
+![image text](https://github.com/lijianyou-Herve/StudyApp/blob/master/apk//art/device-2016-11-20-135419.png)
 
 答题页面
 
-![image text](https://github.com/lijianyou-Herve/StudyApp/apk/art/device-2016-11-20-135454.png)
+![image text](https://github.com/lijianyou-Herve/StudyApp/blob/master/apk/art/device-2016-11-20-135454.png)
