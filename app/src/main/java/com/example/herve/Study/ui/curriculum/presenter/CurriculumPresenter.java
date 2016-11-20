@@ -30,6 +30,6 @@ public class CurriculumPresenter extends MvpBasePresenter<CurriculumConstant.Pre
                 mPresenter.success();
 
             }
-        }, 2000);
+        }, 1000);
     }
 }

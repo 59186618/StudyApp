@@ -55,5 +55,6 @@
     <!--评分页面-->
     <string name="activity_score_title">试卷评分</string>
     <string name="activity_score_sure">确认</string>
+    <string name="activity_score_total_points">总得分:</string>
 
 </resources>

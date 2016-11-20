@@ -178,11 +178,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         return getWindow().getDecorView().getWidth();
     }
 
-    private View getThisActivityContentView() {
+    public View getThisActivityContentView() {
         return mRootView;
     }
 
-    private RelativeLayout getBaseActivityContentView() {
+    public RelativeLayout getBaseActivityContentView() {
         return mContentView;
     }
 

@@ -53,7 +53,6 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
     @BindView(R.id.iv_bg)
     AppCompatImageView ivBg;
 
-
     private CurriculumBannerAdapter curriculumBannerAdapter;
 
 
@@ -145,14 +144,11 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
 
         if (AppConstant.answerSheetBean == null) {
             AppConstant.answerSheetBean = new AnswerSheetBean();
+            for (int i = 0; i < data.getQuestionBeans().size(); i++) {
+                AppConstant.answerSheetBean.getAnswerBeans().add(new AnswerBean());
+            }
         }
         AppConstant.examinationPaperBean = data;
-
-//        CurriculumAdapter curriculumAdapter = new CurriculumAdapter(mContext, datas);
-//
-//        rvCurriculum.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-//
-//        rvCurriculum.setAdapter(curriculumAdapter);
 
         curriculumBannerAdapter = new CurriculumBannerAdapter(mContext, data.getQuestionBeans(), false);
 

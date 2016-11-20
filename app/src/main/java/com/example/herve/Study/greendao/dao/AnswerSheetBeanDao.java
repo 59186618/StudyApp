@@ -30,6 +30,8 @@ public class AnswerSheetBeanDao extends AbstractDao<AnswerSheetBean, Long> {
         public final static Property Student = new Property(3, String.class, "student", false, "STUDENT");
         public final static Property PaperDifficulty = new Property(4, int.class, "paperDifficulty", false, "PAPER_DIFFICULTY");
         public final static Property PaperType = new Property(5, int.class, "paperType", false, "PAPER_TYPE");
+        public final static Property TotalScore = new Property(6, int.class, "totalScore", false, "TOTAL_SCORE");
+        public final static Property TotalPoints = new Property(7, int.class, "totalPoints", false, "TOTAL_POINTS");
     }
 
     private DaoSession daoSession;
@@ -53,7 +55,9 @@ public class AnswerSheetBeanDao extends AbstractDao<AnswerSheetBean, Long> {
                 "\"AUTHOR\" TEXT," + // 2: author
                 "\"STUDENT\" TEXT," + // 3: student
                 "\"PAPER_DIFFICULTY\" INTEGER NOT NULL ," + // 4: paperDifficulty
-                "\"PAPER_TYPE\" INTEGER NOT NULL );"); // 5: paperType
+                "\"PAPER_TYPE\" INTEGER NOT NULL ," + // 5: paperType
+                "\"TOTAL_SCORE\" INTEGER NOT NULL ," + // 6: totalScore
+                "\"TOTAL_POINTS\" INTEGER NOT NULL );"); // 7: totalPoints
     }
 
     /** Drops the underlying database table. */
@@ -87,6 +91,8 @@ public class AnswerSheetBeanDao extends AbstractDao<AnswerSheetBean, Long> {
         }
         stmt.bindLong(5, entity.getPaperDifficulty());
         stmt.bindLong(6, entity.getPaperType());
+        stmt.bindLong(7, entity.getTotalScore());
+        stmt.bindLong(8, entity.getTotalPoints());
     }
 
     @Override
@@ -114,6 +120,8 @@ public class AnswerSheetBeanDao extends AbstractDao<AnswerSheetBean, Long> {
         }
         stmt.bindLong(5, entity.getPaperDifficulty());
         stmt.bindLong(6, entity.getPaperType());
+        stmt.bindLong(7, entity.getTotalScore());
+        stmt.bindLong(8, entity.getTotalPoints());
     }
 
     @Override
@@ -135,7 +143,9 @@ public class AnswerSheetBeanDao extends AbstractDao<AnswerSheetBean, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // author
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // student
             cursor.getInt(offset + 4), // paperDifficulty
-            cursor.getInt(offset + 5) // paperType
+            cursor.getInt(offset + 5), // paperType
+            cursor.getInt(offset + 6), // totalScore
+            cursor.getInt(offset + 7) // totalPoints
         );
         return entity;
     }
@@ -148,6 +158,8 @@ public class AnswerSheetBeanDao extends AbstractDao<AnswerSheetBean, Long> {
         entity.setStudent(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setPaperDifficulty(cursor.getInt(offset + 4));
         entity.setPaperType(cursor.getInt(offset + 5));
+        entity.setTotalScore(cursor.getInt(offset + 6));
+        entity.setTotalPoints(cursor.getInt(offset + 7));
      }
     
     @Override

@@ -1,5 +1,6 @@
 package com.example.herve.Study.wediget.recycleview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,7 @@ public abstract class HeadFootBaseAdapter<T extends RecyclerView.ViewHolder, V> 
     private static final int BASE_ITEM_TYPE_HEADER = 100000;
     private static final int BASE_ITEM_TYPE_FOOTER = 200000;
 
-    protected Context mContext;
+    protected Activity mContext;
     protected String TAG = getClass().getSimpleName() + "HeadFootBaseAdapter";
     protected ArrayList<V> data;
 
@@ -23,7 +24,7 @@ public abstract class HeadFootBaseAdapter<T extends RecyclerView.ViewHolder, V> 
 
     private int VIE_TYPE_SIMPLE = 0;
 
-    public HeadFootBaseAdapter(Context mContext) {
+    public HeadFootBaseAdapter(Activity mContext) {
         this.mContext = mContext;
 
     }

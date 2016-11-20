@@ -28,6 +28,7 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
      */
     public static class Properties {
         public final static Property AnswerId = new Property(0, Long.class, "answerId", true, "_id");
+        public final static Property Result = new Property(1, int.class, "result", false, "RESULT");
     }
 
     private DaoSession daoSession;
@@ -47,7 +48,8 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ANSWER_BEAN\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY );"); // 0: answerId
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: answerId
+                "\"RESULT\" INTEGER NOT NULL );"); // 1: result
     }
 
     /** Drops the underlying database table. */
@@ -64,6 +66,7 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
         if (answerId != null) {
             stmt.bindLong(1, answerId);
         }
+        stmt.bindLong(2, entity.getResult());
     }
 
     @Override
@@ -74,6 +77,7 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
         if (answerId != null) {
             stmt.bindLong(1, answerId);
         }
+        stmt.bindLong(2, entity.getResult());
     }
 
     @Override
@@ -90,7 +94,8 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
     @Override
     public AnswerBean readEntity(Cursor cursor, int offset) {
         AnswerBean entity = new AnswerBean( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0) // answerId
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // answerId
+            cursor.getInt(offset + 1) // result
         );
         return entity;
     }
@@ -98,6 +103,7 @@ public class AnswerBeanDao extends AbstractDao<AnswerBean, Long> {
     @Override
     public void readEntity(Cursor cursor, AnswerBean entity, int offset) {
         entity.setAnswerId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setResult(cursor.getInt(offset + 1));
      }
     
     @Override

@@ -45,14 +45,7 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
     @Override
     public View setView(ViewGroup container, final int position) {
 
-        AnswerBean answerBean = null;
-        if (AppConstant.answerSheetBean.getAnswerBeans().size() == 0 ||
-                AppConstant.answerSheetBean.getAnswerBeans().size() <= position) {
-            answerBean = new AnswerBean();
-            AppConstant.answerSheetBean.getAnswerBeans().add(answerBean);
-        } else {
-            answerBean = AppConstant.answerSheetBean.getAnswerBeans().get(position);
-        }
+        AnswerBean answerBean = AppConstant.answerSheetBean.getAnswerBeans().get(position);
 
         QuestionBean questionBean = mData.get(position);
 

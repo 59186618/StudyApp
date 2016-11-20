@@ -8,8 +8,10 @@ import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
+
 import com.example.herve.Study.greendao.dao.DaoSession;
 import com.example.herve.Study.greendao.dao.AnswerBeanDao;
 import com.example.herve.Study.greendao.dao.AnswerSheetBeanDao;
@@ -24,7 +26,7 @@ import com.example.herve.Study.greendao.dao.AnswerSheetBeanDao;
  * @ version
  */
 @Entity
-public class AnswerSheetBean implements BaseBean{
+public class AnswerSheetBean implements BaseBean {
     @Id
     private Long examinationPaperId;//年级
     private String grade;//年级
@@ -32,10 +34,11 @@ public class AnswerSheetBean implements BaseBean{
     private String student;//命题人
     private int paperDifficulty;//试卷难度
     private int paperType;//试卷类型
+    private int totalScore;//总分
+    private int totalPoints;//总得分
 
     @ToMany(referencedJoinProperty = "answerId")
-    private List<AnswerBean> answerBeans =new ArrayList<>();//选的答案集
-
+    private List<AnswerBean> answerBeans = new ArrayList<>();//选的答案集
 
 
     @Override
@@ -130,7 +133,9 @@ public class AnswerSheetBean implements BaseBean{
         return answerBeans;
     }
 
-    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    /**
+     * Resets a to-many relationship, making the next get call to query for a fresh result.
+     */
     @Generated(hash = 1140255602)
     public synchronized void resetAnswerBeans() {
         answerBeans = null;
@@ -172,11 +177,29 @@ public class AnswerSheetBean implements BaseBean{
         myDao.update(this);
     }
 
-    /** called by internal mechanisms, do not call yourself. */
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 1672360273)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getAnswerSheetBeanDao() : null;
+    }
+
+    public int getTotalScore() {
+        return this.totalScore;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    public int getTotalPoints() {
+        return this.totalPoints;
+    }
+
+    public void setTotalPoints(int totalPoints) {
+        this.totalPoints = totalPoints;
     }
 
     public AnswerSheetBean() {
@@ -192,15 +215,18 @@ public class AnswerSheetBean implements BaseBean{
         this.answerBeans = in.createTypedArrayList(AnswerBean.CREATOR);
     }
 
-    @Generated(hash = 13987491)
+    @Generated(hash = 708364313)
     public AnswerSheetBean(Long examinationPaperId, String grade, String author,
-            String student, int paperDifficulty, int paperType) {
+            String student, int paperDifficulty, int paperType, int totalScore,
+            int totalPoints) {
         this.examinationPaperId = examinationPaperId;
         this.grade = grade;
         this.author = author;
         this.student = student;
         this.paperDifficulty = paperDifficulty;
         this.paperType = paperType;
+        this.totalScore = totalScore;
+        this.totalPoints = totalPoints;
     }
 
     public static final Creator<AnswerSheetBean> CREATOR = new Creator<AnswerSheetBean>() {
@@ -214,10 +240,14 @@ public class AnswerSheetBean implements BaseBean{
             return new AnswerSheetBean[size];
         }
     };
-    /** Used to resolve relations */
+    /**
+     * Used to resolve relations
+     */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
-    /** Used for active entity operations. */
+    /**
+     * Used for active entity operations.
+     */
     @Generated(hash = 741696538)
     private transient AnswerSheetBeanDao myDao;
 }

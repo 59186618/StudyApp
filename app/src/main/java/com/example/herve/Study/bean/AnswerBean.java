@@ -32,6 +32,8 @@ import java.util.List;
 public class AnswerBean implements BaseBean {
     @Id
     private Long answerId;//数据库ID
+
+    private int result;//-1 答错 0//未做 1//正确
     @ToMany(referencedJoinProperty = "selectId")
     private List<SelectBean> selectBeans = new ArrayList<>();
     /**
@@ -45,9 +47,10 @@ public class AnswerBean implements BaseBean {
     @Generated(hash = 877692854)
     private transient AnswerBeanDao myDao;
 
-    @Generated(hash = 1884614436)
-    public AnswerBean(Long answerId) {
+    @Generated(hash = 1569383734)
+    public AnswerBean(Long answerId, int result) {
         this.answerId = answerId;
+        this.result = result;
     }
 
     @Generated(hash = 1597358991)
@@ -152,6 +155,14 @@ public class AnswerBean implements BaseBean {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.answerId);
         dest.writeTypedList(this.selectBeans);
+    }
+
+    public int getResult() {
+        return this.result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 
     protected AnswerBean(Parcel in) {
