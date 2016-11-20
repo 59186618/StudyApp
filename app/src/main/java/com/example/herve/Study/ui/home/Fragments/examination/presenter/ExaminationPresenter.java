@@ -1,4 +1,4 @@
-package com.example.herve.Study.ui.home.Fragments.life.presenter;
+package com.example.herve.Study.ui.home.Fragments.examination.presenter;
 
 
 import com.example.herve.Study.base.presenter.MvpBasePresenter;
@@ -13,10 +13,10 @@ import com.example.herve.Study.base.presenter.MvpBasePresenter;
  * @ projectName     :SquareDemo
  * @ version
  */
-public class LifePresenter extends MvpBasePresenter<LifeContract.PresenterView> implements LifeContract.Presenter {
+public class ExaminationPresenter extends MvpBasePresenter<ExaminationContract.PresenterView> implements ExaminationContract.Presenter {
 
 
-    public LifePresenter(LifeContract.PresenterView mPresenter) {
+    public ExaminationPresenter(ExaminationContract.PresenterView mPresenter) {
         super(mPresenter);
     }
 

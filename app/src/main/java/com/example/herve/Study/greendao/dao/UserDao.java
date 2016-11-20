@@ -31,12 +31,7 @@ public class UserDao extends AbstractDao<User, String> {
         public final static Property Sex = new Property(4, boolean.class, "sex", false, "SEX");
         public final static Property Identity = new Property(5, int.class, "Identity", false, "IDENTITY");
         public final static Property Duties = new Property(6, String.class, "duties", false, "DUTIES");
-        public final static Property Grade = new Property(7, int.class, "grade", false, "GRADE");
-        public final static Property HeadTeacher = new Property(8, String.class, "headTeacher", false, "HEAD_TEACHER");
-        public final static Property Fiduciary = new Property(9, String.class, "fiduciary", false, "FIDUCIARY");
-        public final static Property Father = new Property(10, String.class, "father", false, "FATHER");
-        public final static Property Mother = new Property(11, String.class, "mother", false, "MOTHER");
-        public final static Property Characterization = new Property(12, String.class, "characterization", false, "CHARACTERIZATION");
+        public final static Property Characterization = new Property(7, String.class, "characterization", false, "CHARACTERIZATION");
     }
 
 
@@ -59,12 +54,7 @@ public class UserDao extends AbstractDao<User, String> {
                 "\"SEX\" INTEGER NOT NULL ," + // 4: sex
                 "\"IDENTITY\" INTEGER NOT NULL ," + // 5: Identity
                 "\"DUTIES\" TEXT," + // 6: duties
-                "\"GRADE\" INTEGER NOT NULL ," + // 7: grade
-                "\"HEAD_TEACHER\" TEXT," + // 8: headTeacher
-                "\"FIDUCIARY\" TEXT," + // 9: fiduciary
-                "\"FATHER\" TEXT," + // 10: father
-                "\"MOTHER\" TEXT," + // 11: mother
-                "\"CHARACTERIZATION\" TEXT);"); // 12: characterization
+                "\"CHARACTERIZATION\" TEXT);"); // 7: characterization
     }
 
     /** Drops the underlying database table. */
@@ -103,31 +93,10 @@ public class UserDao extends AbstractDao<User, String> {
         if (duties != null) {
             stmt.bindString(7, duties);
         }
-        stmt.bindLong(8, entity.getGrade());
- 
-        String headTeacher = entity.getHeadTeacher();
-        if (headTeacher != null) {
-            stmt.bindString(9, headTeacher);
-        }
- 
-        String fiduciary = entity.getFiduciary();
-        if (fiduciary != null) {
-            stmt.bindString(10, fiduciary);
-        }
- 
-        String father = entity.getFather();
-        if (father != null) {
-            stmt.bindString(11, father);
-        }
- 
-        String mother = entity.getMother();
-        if (mother != null) {
-            stmt.bindString(12, mother);
-        }
  
         String characterization = entity.getCharacterization();
         if (characterization != null) {
-            stmt.bindString(13, characterization);
+            stmt.bindString(8, characterization);
         }
     }
 
@@ -161,31 +130,10 @@ public class UserDao extends AbstractDao<User, String> {
         if (duties != null) {
             stmt.bindString(7, duties);
         }
-        stmt.bindLong(8, entity.getGrade());
- 
-        String headTeacher = entity.getHeadTeacher();
-        if (headTeacher != null) {
-            stmt.bindString(9, headTeacher);
-        }
- 
-        String fiduciary = entity.getFiduciary();
-        if (fiduciary != null) {
-            stmt.bindString(10, fiduciary);
-        }
- 
-        String father = entity.getFather();
-        if (father != null) {
-            stmt.bindString(11, father);
-        }
- 
-        String mother = entity.getMother();
-        if (mother != null) {
-            stmt.bindString(12, mother);
-        }
  
         String characterization = entity.getCharacterization();
         if (characterization != null) {
-            stmt.bindString(13, characterization);
+            stmt.bindString(8, characterization);
         }
     }
 
@@ -204,12 +152,7 @@ public class UserDao extends AbstractDao<User, String> {
             cursor.getShort(offset + 4) != 0, // sex
             cursor.getInt(offset + 5), // Identity
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // duties
-            cursor.getInt(offset + 7), // grade
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // headTeacher
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // fiduciary
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // father
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // mother
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12) // characterization
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // characterization
         );
         return entity;
     }
@@ -223,12 +166,7 @@ public class UserDao extends AbstractDao<User, String> {
         entity.setSex(cursor.getShort(offset + 4) != 0);
         entity.setIdentity(cursor.getInt(offset + 5));
         entity.setDuties(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setGrade(cursor.getInt(offset + 7));
-        entity.setHeadTeacher(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setFiduciary(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setFather(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setMother(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setCharacterization(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setCharacterization(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

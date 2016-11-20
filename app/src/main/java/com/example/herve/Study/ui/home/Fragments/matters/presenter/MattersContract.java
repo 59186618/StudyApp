@@ -1,4 +1,4 @@
-package com.example.herve.Study.ui.home.Fragments.work.presenter;
+package com.example.herve.Study.ui.home.Fragments.matters.presenter;
 
 
 import com.example.herve.Study.base.presenter.BasePresenter;
@@ -13,7 +13,7 @@ import com.example.herve.Study.base.presenter.BasePresenterView;
  * @ projectName     :SquareDemo
  * @ version
  */
-public interface WorkContract {
+public interface MattersContract {
 
 
     interface Presenter extends BasePresenter {

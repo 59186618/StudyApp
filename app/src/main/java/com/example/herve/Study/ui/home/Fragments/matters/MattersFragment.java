@@ -1,12 +1,12 @@
-package com.example.herve.Study.ui.home.Fragments.work;
+package com.example.herve.Study.ui.home.Fragments.matters;
 
 
 import android.os.Bundle;
 
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseFragment;
-import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkContract;
-import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkPresenter;
+import com.example.herve.Study.ui.home.Fragments.matters.presenter.MattersContract;
+import com.example.herve.Study.ui.home.Fragments.matters.presenter.MattersPresenter;
 
 /**
  * Created           :Herve on 2016/10/10.
@@ -17,16 +17,16 @@ import com.example.herve.Study.ui.home.Fragments.work.presenter.WorkPresenter;
  * @ projectName     :SquareDemo
  * @ version
  */
-public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implements WorkContract.PresenterView {
+public class MattersFragment extends MvpBaseFragment<MattersContract.Presenter> implements MattersContract.PresenterView {
 
 
-    public static WorkFragment newInstance() {
-        WorkFragment fragment = new WorkFragment();
+    public static MattersFragment newInstance() {
+        MattersFragment fragment = new MattersFragment();
         return fragment;
     }
 
-    public static WorkFragment newInstance(Bundle args) {
-        WorkFragment fragment = new WorkFragment();
+    public static MattersFragment newInstance(Bundle args) {
+        MattersFragment fragment = new MattersFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,8 +51,8 @@ public class WorkFragment extends MvpBaseFragment<WorkContract.Presenter> implem
 
 
     @Override
-    protected WorkContract.Presenter initPresenter() {
-        return new WorkPresenter(this);
+    protected MattersContract.Presenter initPresenter() {
+        return new MattersPresenter(this);
     }
 
     @Override

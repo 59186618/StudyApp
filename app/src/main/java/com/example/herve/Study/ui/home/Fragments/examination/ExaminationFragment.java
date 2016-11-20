@@ -1,4 +1,4 @@
-package com.example.herve.Study.ui.home.Fragments.life;
+package com.example.herve.Study.ui.home.Fragments.examination;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.MvpBaseFragment;
 import com.example.herve.Study.bean.GradeBean;
-import com.example.herve.Study.ui.home.Fragments.life.adapter.LifeAdapter;
-import com.example.herve.Study.ui.home.Fragments.life.presenter.LifeContract;
-import com.example.herve.Study.ui.home.Fragments.life.presenter.LifePresenter;
+import com.example.herve.Study.ui.home.Fragments.examination.adapter.ExaminationAdapter;
+import com.example.herve.Study.ui.home.Fragments.examination.presenter.ExaminationContract;
+import com.example.herve.Study.ui.home.Fragments.examination.presenter.ExaminationPresenter;
 import com.example.herve.Study.utils.fastjson.FastJsonParser;
 import com.example.herve.Study.utils.string.StringUtils;
 
@@ -27,19 +27,19 @@ import butterknife.BindView;
  * @ projectName     :SquareDemo
  * @ version
  */
-public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implements LifeContract.PresenterView {
+public class ExaminationFragment extends MvpBaseFragment<ExaminationContract.Presenter> implements ExaminationContract.PresenterView {
 
     @BindView(R.id.recycle_view_life)
     RecyclerView recycleViewLife;
 
 
-    public static LifeFragment newInstance() {
-        LifeFragment fragment = new LifeFragment();
+    public static ExaminationFragment newInstance() {
+        ExaminationFragment fragment = new ExaminationFragment();
         return fragment;
     }
 
-    public static LifeFragment newInstance(Bundle args) {
-        LifeFragment fragment = new LifeFragment();
+    public static ExaminationFragment newInstance(Bundle args) {
+        ExaminationFragment fragment = new ExaminationFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,7 +54,7 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
 
     @Override
     public void success() {
-        LifeAdapter lifeAdapter = new LifeAdapter(mContext);
+        ExaminationAdapter lifeAdapter = new ExaminationAdapter(mContext);
 
 
         String jsonDta = StringUtils.getJson(mContext, "课程分类.json");
@@ -77,8 +77,8 @@ public class LifeFragment extends MvpBaseFragment<LifeContract.Presenter> implem
     }
 
     @Override
-    protected LifeContract.Presenter initPresenter() {
-        return new LifePresenter(this);
+    protected ExaminationContract.Presenter initPresenter() {
+        return new ExaminationPresenter(this);
     }
 
     @Override

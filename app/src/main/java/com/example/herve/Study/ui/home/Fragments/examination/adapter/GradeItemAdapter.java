@@ -1,4 +1,4 @@
-package com.example.herve.Study.ui.home.Fragments.life.adapter;
+package com.example.herve.Study.ui.home.Fragments.examination.adapter;
 
 import android.content.Context;
 import android.content.Intent;

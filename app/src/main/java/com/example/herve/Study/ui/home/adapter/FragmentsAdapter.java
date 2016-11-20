@@ -12,9 +12,7 @@ import android.widget.TextView;
 
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.BaseFragment;
-import com.example.herve.Study.ui.home.Fragments.life.LifeFragment;
-import com.example.herve.Study.ui.home.Fragments.work.WorkFragment;
-import com.example.herve.Study.wediget.HerveTabLayout.HerveTabLayoutAdapter;
+import com.example.herve.Study.wediget.tablayout.HerveTabLayoutAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,13 +49,7 @@ public class FragmentsAdapter extends FragmentPagerAdapter implements HerveTabLa
     @Override
     public Fragment getItem(int position) {
 
-        if (position == 0) {
-            return LifeFragment.newInstance();
-
-        } else {
-            return WorkFragment.newInstance();
-        }
-
+        return data.get(position);
     }
 
 

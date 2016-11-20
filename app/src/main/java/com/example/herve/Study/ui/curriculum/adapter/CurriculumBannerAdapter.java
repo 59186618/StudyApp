@@ -117,12 +117,9 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
                 }
                 if (s.equals("D")) {
                     llSelectD.setBackgroundColor(Color.RED);
-
                 }
-
             }
         });
-
 
         for (int i = 0; i < questionBean.getSelectBeans().size(); i++) {
             SelectBean selectBean = questionBean.getSelectBeans().get(i);
@@ -138,19 +135,17 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
             if (i == 3) {
                 tvSelectD.setText(selectBean.getSelectString());
             }
-
         }
-
 
         setTag(llSelectA, "A");
         setTag(llSelectB, "B");
         setTag(llSelectC, "C");
         setTag(llSelectD, "D");
 
-
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 llSelectA.setBackgroundColor(Color.TRANSPARENT);
                 llSelectB.setBackgroundColor(Color.TRANSPARENT);
@@ -164,8 +159,10 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
                 AppConstant.answerSheetBean.getAnswerBeans().get(position).getSelectBeans().clear();
                 AppConstant.answerSheetBean.getAnswerBeans().get(position).getSelectBeans().add(selectBean);
 
-                Toast.makeText(mContext, "选择了=" + (String) view.getTag(), Toast.LENGTH_SHORT).show();
-
+                boolean result = goNextPager();
+                if (!result) {
+                    Toast.makeText(mContext, mContext.getResources().getString(R.string.complete_tips), Toast.LENGTH_SHORT).show();
+                }
             }
         };
 
@@ -180,7 +177,6 @@ public class CurriculumBannerAdapter extends BannerPagerAdapter<QuestionBean> {
 
     private void setTag(View selectView, String tag) {
         selectView.setTag(tag);
-
     }
 
 }

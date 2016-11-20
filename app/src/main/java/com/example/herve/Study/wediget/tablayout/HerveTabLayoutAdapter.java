@@ -1,4 +1,4 @@
-package com.example.herve.Study.wediget.HerveTabLayout;
+package com.example.herve.Study.wediget.tablayout;
 
 import android.view.View;
 

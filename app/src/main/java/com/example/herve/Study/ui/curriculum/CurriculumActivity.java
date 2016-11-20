@@ -24,7 +24,6 @@ import com.example.herve.Study.ui.curriculum.presenter.CurriculumPresenter;
 import com.example.herve.Study.utils.fastjson.FastJsonParser;
 import com.example.herve.Study.utils.string.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -77,22 +76,7 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
         int score = 0;
         if (id == R.id.action_time_picker) {
 
-            int questionSize = AppConstant.examinationPaperBean.getQuestionBeans().size();
 
-            List<QuestionBean> questionBeans = AppConstant.examinationPaperBean.getQuestionBeans();
-            List<AnswerBean> answerBeans = AppConstant.answerSheetBean.getAnswerBeans();
-
-            for (int i = 0; i < questionSize; i++) {
-                if (answerBeans.size() > i//
-                        && answerBeans.get(i).getSelectBeans().size() > 0
-                        && questionBeans.get(i).getAnswerKey().equals(answerBeans.get(i).getSelectBeans().get(0).getSelect())) {
-                    score += questionBeans.get(i).getScore();
-                }
-
-            }
-
-
-            showSnackToast("所得分数=" + score);
             return true;
         }
 
@@ -172,7 +156,6 @@ public class CurriculumActivity extends MvpBaseActivity<CurriculumPresenter> imp
         bannerCurriculum.canAuto(false);
         bannerCurriculum.showDot(false);
         bannerCurriculum.setAdapter(curriculumBannerAdapter);
-
 
     }
 

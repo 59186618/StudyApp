@@ -1,4 +1,4 @@
-package com.example.herve.Study.ui.home.Fragments.life.adapter;
+package com.example.herve.Study.ui.home.Fragments.examination.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
  * @ projectName     :SquareDemo
  * @ version
  */
-public class LifeAdapter extends RecyclerView.Adapter<LifeAdapter.LifeViewHolder> {
+public class ExaminationAdapter extends RecyclerView.Adapter<ExaminationAdapter.LifeViewHolder> {
 
 
     private Context mContext;
@@ -36,7 +36,7 @@ public class LifeAdapter extends RecyclerView.Adapter<LifeAdapter.LifeViewHolder
     ArrayList<GradeBean> data = new ArrayList<>();
 
 
-    public LifeAdapter(Context mContext) {
+    public ExaminationAdapter(Context mContext) {
         this.mContext = mContext;
     }
 

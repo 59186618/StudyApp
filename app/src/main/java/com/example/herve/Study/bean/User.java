@@ -26,21 +26,8 @@ public class User implements BaseBean {
     private boolean sex;//
     private int Identity;//身份（学生，家长，老师）
     private String duties;//职务（班主任，班长）
-    private int grade;//年级
-    private String headTeacher;//班主任
-    private String fiduciary;//监护人
-    private String father;//父亲
-    private String mother;//母亲
-    private String characterization;//描述
 
-    public User(String userId, String userName, String passWord, String age, boolean sex, int grade) {
-        this.userId = userId;
-        this.passWord = passWord;
-        this.userName = userName;
-        this.age = age;
-        this.sex = sex;
-        this.grade = grade;
-    }
+    private String characterization;//描述
 
 
     @Override
@@ -57,142 +44,74 @@ public class User implements BaseBean {
         dest.writeByte(this.sex ? (byte) 1 : (byte) 0);
         dest.writeInt(this.Identity);
         dest.writeString(this.duties);
-        dest.writeInt(this.grade);
-        dest.writeString(this.headTeacher);
-        dest.writeString(this.fiduciary);
-        dest.writeString(this.father);
-        dest.writeString(this.mother);
         dest.writeString(this.characterization);
     }
-
 
     public String getUserId() {
         return this.userId;
     }
 
-
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
 
     public String getPassWord() {
         return this.passWord;
     }
 
-
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-
 
     public String getUserName() {
         return this.userName;
     }
 
-
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
 
     public String getAge() {
         return this.age;
     }
 
-
     public void setAge(String age) {
         this.age = age;
     }
-
 
     public boolean getSex() {
         return this.sex;
     }
 
-
     public void setSex(boolean sex) {
         this.sex = sex;
     }
-
 
     public int getIdentity() {
         return this.Identity;
     }
 
-
     public void setIdentity(int Identity) {
         this.Identity = Identity;
     }
-
 
     public String getDuties() {
         return this.duties;
     }
 
-
     public void setDuties(String duties) {
         this.duties = duties;
     }
-
-
-    public int getGrade() {
-        return this.grade;
-    }
-
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-
-    public String getHeadTeacher() {
-        return this.headTeacher;
-    }
-
-
-    public void setHeadTeacher(String headTeacher) {
-        this.headTeacher = headTeacher;
-    }
-
-
-    public String getFiduciary() {
-        return this.fiduciary;
-    }
-
-
-    public void setFiduciary(String fiduciary) {
-        this.fiduciary = fiduciary;
-    }
-
-
-    public String getFather() {
-        return this.father;
-    }
-
-
-    public void setFather(String father) {
-        this.father = father;
-    }
-
-
-    public String getMother() {
-        return this.mother;
-    }
-
-
-    public void setMother(String mother) {
-        this.mother = mother;
-    }
-
 
     public String getCharacterization() {
         return this.characterization;
     }
 
-
     public void setCharacterization(String characterization) {
         this.characterization = characterization;
+    }
+
+    public User() {
     }
 
     protected User(Parcel in) {
@@ -203,19 +122,20 @@ public class User implements BaseBean {
         this.sex = in.readByte() != 0;
         this.Identity = in.readInt();
         this.duties = in.readString();
-        this.grade = in.readInt();
-        this.headTeacher = in.readString();
-        this.fiduciary = in.readString();
-        this.father = in.readString();
-        this.mother = in.readString();
         this.characterization = in.readString();
     }
 
+    public User(String userId, String passWord, String userName, String age, boolean sex) {
+        this.userId = userId;
+        this.passWord = passWord;
+        this.userName = userName;
+        this.age = age;
+        this.sex = sex;
+    }
 
-    @Generated(hash = 1341911461)
-    public User(String userId, String passWord, String userName, String age, boolean sex,
-                int Identity, String duties, int grade, String headTeacher, String fiduciary,
-                String father, String mother, String characterization) {
+    @Generated(hash = 264433644)
+    public User(String userId, String passWord, String userName, String age,
+            boolean sex, int Identity, String duties, String characterization) {
         this.userId = userId;
         this.passWord = passWord;
         this.userName = userName;
@@ -223,17 +143,7 @@ public class User implements BaseBean {
         this.sex = sex;
         this.Identity = Identity;
         this.duties = duties;
-        this.grade = grade;
-        this.headTeacher = headTeacher;
-        this.fiduciary = fiduciary;
-        this.father = father;
-        this.mother = mother;
         this.characterization = characterization;
-    }
-
-
-    @Generated(hash = 586692638)
-    public User() {
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {

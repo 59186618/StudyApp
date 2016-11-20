@@ -17,10 +17,10 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
     </android.support.v7.widget.Toolbar>
 
-    <com.example.herve.Study.wediget.HerveTabLayout.HerveTabLayout
+    <com.example.herve.Study.wediget.tablayout.HerveTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-    </com.example.herve.Study.wediget.HerveTabLayout.HerveTabLayout>
+    </com.example.herve.Study.wediget.tablayout.HerveTabLayout>
 </android.support.design.widget.AppBarLayout>

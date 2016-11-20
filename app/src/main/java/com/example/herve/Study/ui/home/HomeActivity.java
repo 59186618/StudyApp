@@ -21,11 +21,12 @@ import com.bumptech.glide.signature.StringSignature;
 import com.example.herve.Study.R;
 import com.example.herve.Study.base.ui.BaseFragment;
 import com.example.herve.Study.base.ui.MvpBaseActivity;
-import com.example.herve.Study.ui.home.Fragments.life.LifeFragment;
+import com.example.herve.Study.ui.home.Fragments.examination.ExaminationFragment;
+import com.example.herve.Study.ui.home.Fragments.matters.MattersFragment;
 import com.example.herve.Study.ui.home.adapter.FragmentsAdapter;
 import com.example.herve.Study.ui.home.presenter.MainConstant;
 import com.example.herve.Study.ui.home.presenter.MainPresenter;
-import com.example.herve.Study.wediget.HerveTabLayout.HerveTabLayout;
+import com.example.herve.Study.wediget.tablayout.HerveTabLayout;
 
 import java.util.ArrayList;
 
@@ -149,7 +150,7 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
 
     @Override
     protected void initView() {
-        toolbar.setTitle("小学生之友");
+        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -211,15 +212,15 @@ public class HomeActivity extends MvpBaseActivity<MainPresenter> implements Main
         ArrayList<BaseFragment> data = new ArrayList<>();
 
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             BaseFragment baseFragment;
             if (i == 0) {
-                baseFragment = new LifeFragment();
-                baseFragment.setTittle("生活");
+                baseFragment = new ExaminationFragment();
+                baseFragment.setTittle(getResources().getString(R.string.home_fragment_examination));
 
             } else {
-                baseFragment = new LifeFragment();
-                baseFragment.setTittle("工作");
+                baseFragment = new MattersFragment();
+                baseFragment.setTittle(getResources().getString(R.string.home_fragment_matters));
             }
             data.add(baseFragment);
         }

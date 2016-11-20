@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">天天爱学习</string>
 
+    <!--nav-->
     <string name="navigation_home">首页</string>
     <string name="navigation_tables">成绩表</string>
     <string name="navigation_collection">我的收藏</string>
@@ -11,10 +12,14 @@
     <string name="navigation_setting">设置</string>
     <string name="navigation_about">关于</string>
 
+    <!--首页分类页面-->
+
+    <string name="home_fragment_examination">考卷</string>
+    <string name="home_fragment_matters">事项</string>
+
     <!--右上角快捷键设置-->
     <string name="toolbar_tab01">设置01</string>
     <string name="toolbar_tab02">设置02</string>
-
 
 
     <string name="tv_enter">点击进入</string>
@@ -46,5 +51,9 @@
 
     <!--考卷页面-->
     <string name="complete_paper">交卷</string>
+    <string name="complete_tips">已结是最后一页，请重新检查或者选择交卷</string>
+    <!--评分页面-->
+    <string name="activity_score_title">试卷评分</string>
+    <string name="activity_score_sure">确认</string>
 
 </resources>
